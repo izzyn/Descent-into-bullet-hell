@@ -10,13 +10,20 @@ public class playerMovement : MonoBehaviour
 
     void Update()
     {
-
             movement.x = Input.GetAxisRaw("Horizontal");
             movement.y = Input.GetAxisRaw("Vertical");
     }
 
     void FixedUpdate()
     {
-        rigidbody.MovePosition(rigidbody.position + movement * movespeed * Time.fixedDeltaTime);
+        bool isShiftKeyDown = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
+        if(isShiftKeyDown)
+        {
+            rigidbody.MovePosition(rigidbody.position + movement * (movespeed/2) * Time.fixedDeltaTime);
+        }
+        else
+        {
+            rigidbody.MovePosition(rigidbody.position + movement * movespeed * Time.fixedDeltaTime);
+        }
     }
 }

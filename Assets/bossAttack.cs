@@ -21,6 +21,7 @@ public class bossAttack: MonoBehaviour
     }
     public List<attackBasic> attackBasicList = new List<attackBasic>();
     public List<int> hpThreshold = new List<int>();
+    public GameObject[] test;
 
     // Start is called before the first frame update
     void Start()
@@ -48,27 +49,130 @@ public class bossAttack: MonoBehaviour
         for(int i = 0; i < attackInfo.spawnInfo.gunInfo.Count; i++)
         {
             GameObject gunSpawned = Instantiate(attackInfo.spawnInfo.gunInfo[i].gun);
-            gunSpawned.GetComponent<Transform>().position = attackInfo.spawnInfo.gunInfo[i].spawnLocation.GetComponent<Transform>().position;
-            gunSpawned.transform.Rotate(new Vector3(0, 0, attackInfo.spawnInfo.gunInfo[i].rotation));
-            for(int j = 0; j > 3; j++)
+            gunSpawned.transform.position = new Vector3(attackInfo.spawnInfo.gunInfo[i].spawnLocation.transform.position.x, attackInfo.spawnInfo.gunInfo[i].spawnLocation.transform.position.y, -2);
+            gunSpawned.GetComponent<SpriteRenderer>().sprite = attackInfo.spawnInfo.gunInfo[i].gunTexture;
+            Vector3 newScale = gameObject.transform.localScale;
+            if (attackInfo.spawnInfo.gunInfo[i].shootTowardsPlayer != true)
             {
-                GameObject shootBullet = Instantiate(attackInfo.spawnInfo.gunInfo[i].bullet, transform.position, Quaternion.identity);
-                shootBullet.GetComponent<damagePlayer>().damage = 5f;
-                shootBullet.transform.position += transform.right * Time.deltaTime;
-                yield return new WaitForSeconds(0.1f);
+                gunSpawned.transform.Rotate(new Vector3(0, 0, attackInfo.spawnInfo.gunInfo[i].rotation));
+                if ((gunSpawned.transform.rotation.eulerAngles.z * Mathf.Rad2Deg) > 90f || (gunSpawned.transform.rotation.eulerAngles.z) < -90f)
+                {
+                    gunSpawned.GetComponent<SpriteRenderer>().flipY = true;
+                }
             }
+            else
+            {
+                GameObject player = GameObject.FindGameObjectWithTag("Player");
+                Vector3 target = player.transform.position - gunSpawned.transform.position;
+                float angle = Mathf.Atan2(target.y, target.x) * Mathf.Rad2Deg;
+                gunSpawned.transform.Rotate(new Vector3(0, 0, angle));
+                if (((gunSpawned.transform.rotation.eulerAngles.z) > 90) && ((gunSpawned.transform.rotation.eulerAngles.z) < 270))
+                {
+                    gunSpawned.GetComponent<SpriteRenderer>().flipY = true;
+                }
+                else
+                {
+                    gunSpawned.GetComponent<SpriteRenderer>().flipY = false;
+                }
+            }
+            if(attackInfo.spawnInfo.gunInfo[i].tracksPlayer)
+            {
+                StartCoroutine(followPlayer(attackInfo.spawnInfo.gunInfo[i], gunSpawned));
+            }
+            StartCoroutine(spawnBullets(attackInfo.spawnInfo.gunInfo[i], gunSpawned));
+
+            yield return new WaitForSeconds(attackInfo.spawnInfo.spawnDelay);
         }
-        yield return null;
+    }
+    IEnumerator followPlayer(gunSpawnInfo.spawnedGun attackInfo, GameObject gun)
+    {
+        while(gun != null)
+        {
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            Vector3 target = player.transform.position - gun.transform.position;
+            gun.transform.rotation = Quaternion.LookRotation(Vector3.forward, target);
+            Quaternion rotation = Quaternion.LookRotation(Vector3.forward, target);
+            gun.transform.rotation = rotation * Quaternion.Euler(0, 0, 90);
+            yield return new WaitForSeconds(attackInfo.trackingAccuracy);
+            
+        }
+    }
+    IEnumerator spawnBullets(gunSpawnInfo.spawnedGun attackInfo, GameObject gunSource)
+    {
+        for (int i = 0; i < attackInfo.bulletAmmount; i++)
+        {
+            attackInfo.colourConfig.stage++;
+            if (attackInfo.colourConfig.stage >= attackInfo.colourConfig.Colour.Count)
+            {
+                attackInfo.colourConfig.stage = 0;
+            }
+            if (attackInfo.multiShoot)
+            {
+                for(int j = 0; j < attackInfo.multiShootConfig.bulletMultiplier; j++)
+                {
+                    float startAngle = (attackInfo.multiShootConfig.angle / 2) * -1;
+                    float angleChunks = attackInfo.multiShootConfig.angle / attackInfo.multiShootConfig.bulletMultiplier;
+
+                    GameObject shootBullet = Instantiate(attackInfo.bullet);
+                    Debug.Log(shootBullet.GetComponent<SpriteRenderer>().material.GetColor("_Color"));
+                    changeColour(attackInfo.colourConfig.stage, attackInfo.colourConfig.Colour, shootBullet);
+                    test = GameObject.FindGameObjectsWithTag("bullet");
+                    Debug.Log(test.Length);
+                    float width = gunSource.GetComponent<SpriteRenderer>().bounds.size.x;
+                    if(gunSource.GetComponent<SpriteRenderer>().flipY)
+                    {
+                        shootBullet.transform.position = gunSource.transform.Find("bulletSpawnFlipped").position;
+                    }
+                    else
+                    {
+                        shootBullet.transform.position = gunSource.transform.Find("bulletSpawn").position;
+                    }
+                    shootBullet.transform.rotation = gunSource.transform.rotation;
+                    shootBullet.transform.Rotate(new Vector3(0, 0, shootBullet.transform.rotation.z + startAngle + (angleChunks*j)));
+                    shootBullet.GetComponent<moveBullet>().movementSpeedMultiplier = attackInfo.bulletSpeedMultiplier;
+
+                }
+            }
+            else
+            {
+                GameObject shootBullet = Instantiate(attackInfo.bullet);
+                Debug.Log(shootBullet.GetComponent<SpriteRenderer>().material.GetColor("_Color"));
+                changeColour(attackInfo.colourConfig.stage, attackInfo.colourConfig.Colour, shootBullet);
+                test = GameObject.FindGameObjectsWithTag("bullet");
+                Debug.Log(test.Length);
+                float width = gunSource.GetComponent<SpriteRenderer>().bounds.size.x;
+                if (gunSource.GetComponent<SpriteRenderer>().flipY)
+                {
+                    shootBullet.transform.position = new Vector3(gunSource.transform.position.x - (width / 2), gunSource.transform.position.y, -1);
+                }
+                else
+                {
+                    shootBullet.transform.position = new Vector3(gunSource.transform.position.x + (width / 2), gunSource.transform.position.y, -1);
+                }
+                shootBullet.transform.rotation = gunSource.transform.rotation;
+                shootBullet.GetComponent<moveBullet>().movementSpeedMultiplier = attackInfo.bulletSpeedMultiplier;
+            }
+            yield return new WaitForSeconds(attackInfo.bulletDelay);
+        }
+        Destroy(gunSource);
     }
     IEnumerator pickAttack()
     {
         int oldIndex = 0;
         while(true)
         {
-            int pickedAttack = Random.Range(0, attackBasicList.Count -1);
-            if(pickedAttack >= oldIndex)
+            int pickedAttack;
+            if (attackBasicList.Count > 1)
             {
-                pickedAttack++;
+                pickedAttack = Random.Range(0, attackBasicList.Count - 1);
+                if (pickedAttack >= oldIndex)
+                {
+                    pickedAttack++;
+                }
+            }
+            else
+            {
+                pickedAttack = Random.Range(0, attackBasicList.Count);
             }
             oldIndex = pickedAttack;
             IEnumerator attackCoroutine = null;
@@ -87,17 +191,24 @@ public class bossAttack: MonoBehaviour
             }
             if(attackCoroutine != null)
             {
-                Debug.Log("Shooting");
                 StartCoroutine(attackCoroutine);
                 yield return new WaitForSeconds(attackBasicList[pickedAttack].duration);
                 StopCoroutine(attackCoroutine);
             }
             else
             {
-                Debug.Log("Waiting");
                 yield return new WaitForSeconds(attackBasicList[pickedAttack].duration);
             }
         }
+    }
+    public static void summonBullet(GameObject gunSource, gunSpawnInfo.spawnedGun attackInfo, float angle)
+    {
+
+    }
+    void changeColour(int stage, List<Color> ColourList, GameObject whatToChange)
+    {
+        whatToChange.GetComponent<SpriteRenderer>().material.SetColor("_Color", ColourList[stage]);
+
     }
 }
 [System.Serializable]
@@ -110,11 +221,34 @@ public class gunSpawnInfo
         public float rotation;
         public GameObject bullet;
         public GameObject gun;
+        public Sprite gunTexture;
+        public float bulletDelay;
+        public float bulletAmmount;
+        public float bulletSpeedMultiplier;
+        public bool shootTowardsPlayer;
+        public bool multiShoot;
+        public bool tracksPlayer;
+        public float trackingAccuracy;
+        public multiShootSettings multiShootConfig;
+        public colourChange colourConfig;
+        int stage;
         public enum weaponSpawned
         {
             basicGun
         }
     }
+    public float spawnDelay;
     public List<spawnedGun> gunInfo = new List<spawnedGun>();
-
+}
+[System.Serializable]
+public class multiShootSettings
+{
+    public int bulletMultiplier;
+    public float angle;
+}
+[System.Serializable]
+public class colourChange
+{
+    public int stage;
+    public List<Color> Colour = new List<Color>();
 }

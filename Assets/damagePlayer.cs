@@ -7,6 +7,7 @@ public class damagePlayer : MonoBehaviour
         public float damage;
         public bool removeWhenInvincible;
         public bool removeWhenHit;
+        public bool isActive;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,21 +21,25 @@ public class damagePlayer : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<hpAndLives>() != null)
+        if(isActive)
         {
-            if(collision.gameObject.GetComponent<hpAndLives>().invincible != true)
+            if (collision.gameObject.GetComponent<hpAndLives>() != null)
             {
-                collision.gameObject.GetComponent<hpAndLives>().HP = collision.gameObject.GetComponent<hpAndLives>().HP - damage;
-                if(removeWhenHit)
+                if (collision.gameObject.GetComponent<hpAndLives>().invincible != true)
                 {
-                    Destroy(gameObject);
-                }
-            }
-            else
-            {
-                if(removeWhenInvincible)
+                    collision.gameObject.GetComponent<hpAndLives>().HP = collision.gameObject.GetComponent<hpAndLives>().HP - damage;
+                    collision.gameObject.GetComponent<hpAndLives>().displayUpdater.updateThing();
+                    if (removeWhenHit)
+                    {
+                        Destroy(gameObject);
+                    }
+                }   
+                else
                 {
-                    Destroy(gameObject);
+                    if (removeWhenInvincible)
+                    {
+                        Destroy(gameObject);
+                    }
                 }
             }
         }

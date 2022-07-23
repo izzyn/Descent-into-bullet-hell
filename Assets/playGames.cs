@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class playGames : MonoBehaviour
 {
     public string sceneName;
+    public string unloadScene;
     // Start is called before the first frame update
     void Start()
     {

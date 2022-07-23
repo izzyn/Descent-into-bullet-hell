@@ -6,9 +6,11 @@ using UnityEngine.SceneManagement;
 public class hpAndLives : MonoBehaviour
 {
     public string sceneName;
+    public string unLoadScene;
     public float HP;
     public int Lives;
     public bool invincible;
+    public displayHPandLives displayUpdater;
     float startingHP;
     int startingLives;
 
@@ -28,6 +30,7 @@ public class hpAndLives : MonoBehaviour
             {
                 HP = startingHP;
                 Lives--;
+                displayUpdater.updateThing();
                 StartCoroutine(beInvincible());
             }
             else
