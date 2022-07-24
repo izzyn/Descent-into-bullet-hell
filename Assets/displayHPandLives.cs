@@ -40,7 +40,7 @@ public class displayHPandLives : MonoBehaviour
                 HPList.Add(newDisplay);
                 newDisplay.GetComponent<SpriteRenderer>().sprite = hpFull;
                 float width = newDisplay.GetComponent<SpriteRenderer>().bounds.size.x;
-                newDisplay.transform.position = new Vector3(-8.545f + ((0.05f+width) * (j)), 4.374f - ((0.05f+height) * (i)), 0);
+                newDisplay.transform.position = new Vector3(-10f + ((0.05f+width) * (j)), 4.374f - ((0.05f+height) * (i)), 0);
             }
         }
         if(LivesLeft > 0)
@@ -53,7 +53,7 @@ public class displayHPandLives : MonoBehaviour
                     LivesList.Add(newDisplay);
                     newDisplay.GetComponent<SpriteRenderer>().sprite = Lives;
                     float width = newDisplay.GetComponent<SpriteRenderer>().bounds.size.x;
-                    newDisplay.transform.position = new Vector3(-8.545f + ((0.05f + width) * j), 4.374f - ((0.05f + height) * (i + res)), 0);
+                    newDisplay.transform.position = new Vector3(-10f + ((0.05f + width) * j), 4.374f - ((0.05f + height) * (i + res)), 0);
                 }
             }
         } 

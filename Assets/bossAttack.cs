@@ -49,14 +49,21 @@ public class bossAttack: MonoBehaviour
         for(int i = 0; i < attackInfo.spawnInfo.gunInfo.Count; i++)
         {
             GameObject gunSpawned = Instantiate(attackInfo.spawnInfo.gunInfo[i].gun);
+            Vector2 savedScale = gunSpawned.transform.localScale;
+            gunSpawned.transform.localScale = new Vector2(savedScale.x * attackInfo.spawnInfo.gunInfo[i].gunScaleX, savedScale.y * attackInfo.spawnInfo.gunInfo[i].gunScaleY);
             gunSpawned.transform.position = new Vector3(attackInfo.spawnInfo.gunInfo[i].spawnLocation.transform.position.x, attackInfo.spawnInfo.gunInfo[i].spawnLocation.transform.position.y, -2);
             gunSpawned.GetComponent<SpriteRenderer>().sprite = attackInfo.spawnInfo.gunInfo[i].gunTexture;
+            if(gunSpawned.GetComponent<SpriteRenderer>().sharedMaterial == attackInfo.spawnInfo.gunInfo[i].bullet.GetComponent<SpriteRenderer>().sharedMaterial)
+            {
+                changeColour(attackInfo.spawnInfo.gunInfo[i].colourConfig.stage, attackInfo.spawnInfo.gunInfo[i].colourConfig.Colour, gunSpawned);
+            }
             Vector3 newScale = gameObject.transform.localScale;
             if (attackInfo.spawnInfo.gunInfo[i].shootTowardsPlayer != true)
             {
                 gunSpawned.transform.Rotate(new Vector3(0, 0, attackInfo.spawnInfo.gunInfo[i].rotation));
                 if ((gunSpawned.transform.rotation.eulerAngles.z * Mathf.Rad2Deg) > 90f || (gunSpawned.transform.rotation.eulerAngles.z) < -90f)
                 {
+                    Debug.Log("Yes");
                     gunSpawned.GetComponent<SpriteRenderer>().flipY = true;
                 }
             }
@@ -101,11 +108,6 @@ public class bossAttack: MonoBehaviour
     {
         for (int i = 0; i < attackInfo.bulletAmmount; i++)
         {
-            attackInfo.colourConfig.stage++;
-            if (attackInfo.colourConfig.stage >= attackInfo.colourConfig.Colour.Count)
-            {
-                attackInfo.colourConfig.stage = 0;
-            }
             if (attackInfo.multiShoot)
             {
                 for(int j = 0; j < attackInfo.multiShootConfig.bulletMultiplier; j++)
@@ -114,6 +116,11 @@ public class bossAttack: MonoBehaviour
                     float angleChunks = attackInfo.multiShootConfig.angle / attackInfo.multiShootConfig.bulletMultiplier;
 
                     GameObject shootBullet = Instantiate(attackInfo.bullet);
+                    createBullet(shootBullet, attackInfo);
+                    if(attackInfo.beam)
+                    {
+                        StartCoroutine(destroyBeam(shootBullet, attackInfo.beamConfig.lifespan, gunSource));
+                    }
                     Debug.Log(shootBullet.GetComponent<SpriteRenderer>().material.GetColor("_Color"));
                     changeColour(attackInfo.colourConfig.stage, attackInfo.colourConfig.Colour, shootBullet);
                     test = GameObject.FindGameObjectsWithTag("bullet");
@@ -136,6 +143,11 @@ public class bossAttack: MonoBehaviour
             else
             {
                 GameObject shootBullet = Instantiate(attackInfo.bullet);
+                createBullet(shootBullet, attackInfo);
+                if (attackInfo.beam)
+                {
+                    StartCoroutine(destroyBeam(shootBullet, attackInfo.beamConfig.lifespan,gunSource));
+                }
                 Debug.Log(shootBullet.GetComponent<SpriteRenderer>().material.GetColor("_Color"));
                 changeColour(attackInfo.colourConfig.stage, attackInfo.colourConfig.Colour, shootBullet);
                 test = GameObject.FindGameObjectsWithTag("bullet");
@@ -143,17 +155,40 @@ public class bossAttack: MonoBehaviour
                 float width = gunSource.GetComponent<SpriteRenderer>().bounds.size.x;
                 if (gunSource.GetComponent<SpriteRenderer>().flipY)
                 {
-                    shootBullet.transform.position = new Vector3(gunSource.transform.position.x - (width / 2), gunSource.transform.position.y, -1);
+                    shootBullet.transform.position = gunSource.transform.Find("bulletSpawnFlipped").position;
                 }
                 else
                 {
-                    shootBullet.transform.position = new Vector3(gunSource.transform.position.x + (width / 2), gunSource.transform.position.y, -1);
+                    shootBullet.transform.position = gunSource.transform.Find("bulletSpawn").position;
                 }
                 shootBullet.transform.rotation = gunSource.transform.rotation;
                 shootBullet.GetComponent<moveBullet>().movementSpeedMultiplier = attackInfo.bulletSpeedMultiplier;
             }
             yield return new WaitForSeconds(attackInfo.bulletDelay);
+            attackInfo.colourConfig.stage++;
+            if (attackInfo.colourConfig.stage >= attackInfo.colourConfig.Colour.Count)
+            {
+                attackInfo.colourConfig.stage = 0;
+            }
         }
+        if(!attackInfo.beam)
+        {
+            Destroy(gunSource);
+        }
+    }
+    public static GameObject createBullet(GameObject shootBullet, gunSpawnInfo.spawnedGun attackInfo)
+    {
+        shootBullet.GetComponent<moveBullet>().scaleUpX = attackInfo.scaleX;
+        shootBullet.GetComponent<moveBullet>().scaleUpY = attackInfo.scaleY;
+        shootBullet.GetComponent<moveBullet>().incrementalGrowth = attackInfo.incrementalGrowth;
+        shootBullet.GetComponent<moveBullet>().growthMultiplier = attackInfo.growthMultiplier;
+        shootBullet.GetComponent<damagePlayer>().damage = attackInfo.bulletDamage;
+        return shootBullet;
+    }
+    IEnumerator destroyBeam(GameObject shootBullet, float time, GameObject gunSource)
+    {
+        yield return new WaitForSeconds(time);
+        Destroy(shootBullet);
         Destroy(gunSource);
     }
     IEnumerator pickAttack()
@@ -224,13 +259,22 @@ public class gunSpawnInfo
         public Sprite gunTexture;
         public float bulletDelay;
         public float bulletAmmount;
+        public float bulletDamage;
         public float bulletSpeedMultiplier;
+        public float growthMultiplier;
+        public float scaleX; //bullet scale (is a multiplier)
+        public float scaleY;
+        public float gunScaleX;
+        public float gunScaleY;
         public bool shootTowardsPlayer;
         public bool multiShoot;
         public bool tracksPlayer;
+        public bool incrementalGrowth;
+        public bool beam;
         public float trackingAccuracy;
         public multiShootSettings multiShootConfig;
         public colourChange colourConfig;
+        public beamSettings beamConfig;
         int stage;
         public enum weaponSpawned
         {
@@ -251,4 +295,9 @@ public class colourChange
 {
     public int stage;
     public List<Color> Colour = new List<Color>();
+}
+[System.Serializable]
+public class beamSettings
+{
+    public float lifespan;
 }
