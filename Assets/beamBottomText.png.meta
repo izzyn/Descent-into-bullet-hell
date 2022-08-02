@@ -5,6 +5,9 @@ TextureImporter:
   - first:
       213: -6765679021466927504
     second: beamBottomText
+  - first:
+      213: -195092935744775109
+    second: beamBottomTopPart
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -110,6 +113,27 @@ TextureImporter:
       bones: []
       spriteID: 07eb62da6ca7b12a0800000000000000
       internalID: -6765679021466927504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beamBottomTopPart
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 1
+        width: 4
+        height: 4
+      alignment: 9
+      pivot: {x: -0.002014488, y: 0.50343376}
+      border: {x: 1, y: 1, z: 0, w: 1}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3c9eb23204ea4df0800000000000000
+      internalID: -195092935744775109
       vertices: []
       indices: 
       edges: []
