@@ -152,12 +152,11 @@ public class bossAttack: MonoBehaviour
                     float width = gunSource.GetComponent<SpriteRenderer>().bounds.size.x;
                     if(gunSource.GetComponent<SpriteRenderer>().flipY)
                     {
-                        shootBullet.transform.position = gunSource.transform.Find("bulletSpawnFlipped").position;
-
+                        shootBullet.transform.position = new Vector3(gunSource.transform.Find("bulletSpawnFlipped").position.x, gunSource.transform.Find("bulletSpawnFlipped").position.y, -3);
                     }
                     else
                     {
-                        shootBullet.transform.position = gunSource.transform.Find("bulletSpawn").position;
+                        shootBullet.transform.position = new Vector3(gunSource.transform.Find("bulletSpawn").position.x, gunSource.transform.Find("bulletSpawn").position.y, -3);
                     }
                     shootBullet.transform.rotation = gunSource.transform.rotation;
                     shootBullet.transform.Rotate(new Vector3(0, 0, shootBullet.transform.rotation.z + startAngle + (angleChunks*j)));
