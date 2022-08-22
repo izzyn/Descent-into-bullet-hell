@@ -86,9 +86,33 @@ public class bossAttack: MonoBehaviour
             {
                 StartCoroutine(followPlayer(attackInfo.spawnInfo.gunInfo[i], gunSpawned));
             }
+            if (attackInfo.spawnInfo.gunInfo[i].rotatesOverTime)
+            {
+                StartCoroutine(rotateGun(attackInfo.spawnInfo.gunInfo[i], gunSpawned));
+            }
             StartCoroutine(spawnBullets(attackInfo.spawnInfo.gunInfo[i], gunSpawned));
 
             yield return new WaitForSeconds(attackInfo.spawnInfo.spawnDelay);
+        }
+    }
+    IEnumerator rotateGun(gunSpawnInfo.spawnedGun attackInfo, GameObject gun)
+    {
+        yield return new WaitForSeconds(attackInfo.rotationConfig.timeToStart);
+        Vector3 saveRotation = gun.transform.rotation.eulerAngles;
+        float rotationSteps = 30;
+        float degreesPerRotation = (attackInfo.rotationConfig.degrees / rotationSteps);
+        if(gun.GetComponent<SpriteRenderer>().flipY)
+        {
+            degreesPerRotation *= -1;
+        }
+        while(gun != null)
+        {
+            for(int i = 0; i < rotationSteps; i++)
+            {
+                gun.transform.Rotate(new Vector3(0, 0, degreesPerRotation));
+                yield return new WaitForSeconds(0.1f / attackInfo.rotationConfig.speedMultiplier);
+            }
+            degreesPerRotation *= -1;
         }
     }
     IEnumerator followPlayer(gunSpawnInfo.spawnedGun attackInfo, GameObject gun)
@@ -129,6 +153,7 @@ public class bossAttack: MonoBehaviour
                     if(gunSource.GetComponent<SpriteRenderer>().flipY)
                     {
                         shootBullet.transform.position = gunSource.transform.Find("bulletSpawnFlipped").position;
+
                     }
                     else
                     {
@@ -275,6 +300,8 @@ public class gunSpawnInfo
         public multiShootSettings multiShootConfig;
         public colourChange colourConfig;
         public beamSettings beamConfig;
+        public bool rotatesOverTime;
+        public rotationSettings rotationConfig;
         int stage;
         public enum weaponSpawned
         {
@@ -300,4 +327,12 @@ public class colourChange
 public class beamSettings
 {
     public float lifespan;
+}
+[System.Serializable]
+public class rotationSettings
+{
+    public float timeToStart;
+    public float degrees;
+    public float speedMultiplier;
+    public bool rotatesBack;
 }

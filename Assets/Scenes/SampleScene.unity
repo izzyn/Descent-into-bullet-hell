@@ -1972,7 +1972,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].duration
-      value: 3
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[1].duration
@@ -2000,7 +2000,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[1].spawnInfo.gunInfo.Array.size
@@ -2021,11 +2021,11 @@ PrefabInstance:
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[1].gun
       value: 
-      objectReference: {fileID: 8146236694733322058, guid: cb0a917589e481244b7ee5032be3f34f, type: 3}
+      objectReference: {fileID: 8146236694733322058, guid: 6098387de2ba9ac4189ffb1f1315715b, type: 3}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[2].gun
       value: 
-      objectReference: {fileID: 8146236694733322058, guid: 6098387de2ba9ac4189ffb1f1315715b, type: 3}
+      objectReference: {fileID: 8146236694733322058, guid: cb0a917589e481244b7ee5032be3f34f, type: 3}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[3].gun
       value: 
@@ -2084,6 +2084,10 @@ PrefabInstance:
       objectReference: {fileID: 8146236694733322058, guid: cb0a917589e481244b7ee5032be3f34f, type: 3}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[1].beam
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[2].beam
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
@@ -2092,35 +2096,35 @@ PrefabInstance:
       objectReference: {fileID: 8438050386559320783, guid: bc92b5e85684a03409a39249bf0ba14b, type: 3}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].scaleX
-      value: 1.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].scaleY
-      value: 1.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[1].bullet
       value: 
-      objectReference: {fileID: 1125531046277643471, guid: 8ed8bad705c85274d987ff0afbb79d39, type: 3}
+      objectReference: {fileID: 8438050386559320783, guid: bc92b5e85684a03409a39249bf0ba14b, type: 3}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[1].scaleX
-      value: 1.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[1].scaleY
-      value: 1.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[2].bullet
       value: 
-      objectReference: {fileID: 8438050386559320783, guid: bc92b5e85684a03409a39249bf0ba14b, type: 3}
+      objectReference: {fileID: 1125531046277643471, guid: 8ed8bad705c85274d987ff0afbb79d39, type: 3}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[2].scaleX
-      value: 2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[2].scaleY
-      value: 2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[3].bullet
@@ -2187,6 +2191,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].rotation
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[1].Colour.b
       value: 1
       objectReference: {fileID: 0}
@@ -2200,7 +2208,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[1].rotation
-      value: 0
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[2].Colour.b
@@ -2216,7 +2224,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[2].rotation
-      value: 180
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[3].rotation
@@ -2276,10 +2284,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[1].gunScaleX
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[1].gunScaleY
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[2].gunScaleX
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[2].gunScaleY
       value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
@@ -2293,7 +2309,7 @@ PrefabInstance:
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[1].gunTexture
       value: 
-      objectReference: {fileID: -7174612620203739136, guid: 26b4b31158124d741b27d35ac18239bd, type: 3}
+      objectReference: {fileID: -5831714525949929224, guid: 26b4b31158124d741b27d35ac18239bd, type: 3}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[1].multiShoot
       value: 1
@@ -2301,7 +2317,7 @@ PrefabInstance:
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[2].gunTexture
       value: 
-      objectReference: {fileID: -5831714525949929224, guid: 26b4b31158124d741b27d35ac18239bd, type: 3}
+      objectReference: {fileID: -7174612620203739136, guid: 26b4b31158124d741b27d35ac18239bd, type: 3}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[2].multiShoot
       value: 1
@@ -2352,15 +2368,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].bulletDelay
-      value: 0.01
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[1].bulletDelay
-      value: 0.01
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[2].bulletDelay
-      value: 0.1
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[3].bulletDelay
@@ -2424,11 +2440,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[1].bulletDamage
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[1].tracksPlayer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[2].bulletDamage
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[2].tracksPlayer
@@ -2440,7 +2460,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].bulletAmmount
-      value: 5
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].spawnLocation
@@ -2448,20 +2468,20 @@ PrefabInstance:
       objectReference: {fileID: 218408149}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[1].bulletAmmount
-      value: 1
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[1].spawnLocation
       value: 
-      objectReference: {fileID: 1435815558}
+      objectReference: {fileID: 2036536110}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[2].bulletAmmount
-      value: 20
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[2].spawnLocation
       value: 
-      objectReference: {fileID: 512922221}
+      objectReference: {fileID: 1435815558}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[3].bulletAmmount
       value: 20
@@ -2567,6 +2587,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1629396999}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].rotatesOverTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[1].rotatesOverTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].growthMultiplier
       value: 0.25
       objectReference: {fileID: 0}
@@ -2583,11 +2611,19 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[2].growthMultiplier
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].incrementalGrowth
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[1].incrementalGrowth
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[2].incrementalGrowth
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
@@ -2596,7 +2632,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[1].shootTowardsPlayer
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[2].shootTowardsPlayer
@@ -2652,6 +2688,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[1].beamConfig.lifespan
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[2].beamConfig.lifespan
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
@@ -2660,11 +2700,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[1].bulletSpeedMultiplier
-      value: 0.2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[2].bulletSpeedMultiplier
-      value: 2
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[3].bulletSpeedMultiplier
@@ -2723,7 +2763,15 @@ PrefabInstance:
       value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].rotationConfig.degrees
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[1].multiShootConfig.angle
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[1].rotationConfig.degrees
       value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
@@ -2771,16 +2819,28 @@ PrefabInstance:
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].rotationConfig.timeToStart
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].colourConfig.Colour.Array.size
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].rotationConfig.speedMultiplier
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[1].colourConfig.Colour.Array.size
-      value: 3
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[1].rotationConfig.speedMultiplier
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[2].colourConfig.Colour.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].multiShootConfig.bulletMultiplier
@@ -2892,7 +2952,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[1].colourConfig.Colour.Array.data[0].b
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[1].colourConfig.Colour.Array.data[0].g
@@ -2900,15 +2960,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[1].colourConfig.Colour.Array.data[0].r
-      value: 0.7555547
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[1].colourConfig.Colour.Array.data[1].b
-      value: 0.847029
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[1].colourConfig.Colour.Array.data[1].g
-      value: 0.4292453
+      value: 0.8365737
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[1].colourConfig.Colour.Array.data[1].r
@@ -2916,15 +2976,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[1].colourConfig.Colour.Array.data[2].b
-      value: 1
+      value: 0.022976637
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[1].colourConfig.Colour.Array.data[2].g
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[1].colourConfig.Colour.Array.data[2].r
-      value: 0.44363832
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[1].colourConfig.Colour.Array.data[3].b
@@ -2932,11 +2992,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[1].colourConfig.Colour.Array.data[3].g
-      value: 0.047619104
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[1].colourConfig.Colour.Array.data[3].r
-      value: 0
+      value: 0.7555547
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[1].colourConfig.Colour.Array.data[4].b
@@ -2948,15 +3008,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[2].colourConfig.Colour.Array.data[0].b
-      value: 0.07075471
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[2].colourConfig.Colour.Array.data[0].g
-      value: 0.8985191
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[2].colourConfig.Colour.Array.data[0].r
+      value: 0.7555547
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[2].colourConfig.Colour.Array.data[1].b
+      value: 0.847029
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[2].colourConfig.Colour.Array.data[1].g
+      value: 0.4292453
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[2].colourConfig.Colour.Array.data[1].r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[2].colourConfig.Colour.Array.data[2].b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[2].colourConfig.Colour.Array.data[2].r
+      value: 0.44363832
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915384, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: m_RootOrder
