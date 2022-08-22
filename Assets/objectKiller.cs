@@ -61,7 +61,10 @@ public class objectKiller : MonoBehaviour
                 }
             case kil.all:
                 {
-                    Destroy(collision.gameObject);
+                    if(!collision.GetComponent<moveBullet>().isBeam)
+                    {
+                        Destroy(collision.gameObject);
+                    }
                     break;
                 }
         }
@@ -70,7 +73,7 @@ public class objectKiller : MonoBehaviour
     {
         if (collision.GetComponent<moveBullet>().isBeam)
         {
-            collision.GetComponent<moveBullet>().stopGrowingpls = true;
+            //collision.GetComponent<moveBullet>().stopGrowingpls = true;
         }
         else
         {

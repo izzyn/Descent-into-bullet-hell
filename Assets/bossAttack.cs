@@ -51,7 +51,7 @@ public class bossAttack: MonoBehaviour
             GameObject gunSpawned = Instantiate(attackInfo.spawnInfo.gunInfo[i].gun);
             Vector2 savedScale = gunSpawned.transform.localScale;
             gunSpawned.transform.localScale = new Vector2(savedScale.x * attackInfo.spawnInfo.gunInfo[i].gunScaleX, savedScale.y * attackInfo.spawnInfo.gunInfo[i].gunScaleY);
-            gunSpawned.transform.position = new Vector3(attackInfo.spawnInfo.gunInfo[i].spawnLocation.transform.position.x, attackInfo.spawnInfo.gunInfo[i].spawnLocation.transform.position.y, -2);
+            gunSpawned.transform.position = new Vector3(attackInfo.spawnInfo.gunInfo[i].spawnLocation.transform.position.x, attackInfo.spawnInfo.gunInfo[i].spawnLocation.transform.position.y, -3);
             gunSpawned.GetComponent<SpriteRenderer>().sprite = attackInfo.spawnInfo.gunInfo[i].gunTexture;
             if(gunSpawned.GetComponent<SpriteRenderer>().sharedMaterial == attackInfo.spawnInfo.gunInfo[i].bullet.GetComponent<SpriteRenderer>().sharedMaterial)
             {
@@ -327,6 +327,7 @@ public class colourChange
 public class beamSettings
 {
     public float lifespan;
+    public Sprite layerOntopSprite;
 }
 [System.Serializable]
 public class rotationSettings
