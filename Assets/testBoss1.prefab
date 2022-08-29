@@ -97,8 +97,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e66aae82631169045babf6099ae9dfd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackBasicList: []
   hpThreshold: 
-  bullet: {fileID: 0}
+  test: []
 --- !u!114 &3565553243765442947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,6 +113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementPoints: []
+  movementSpeed: 0
 --- !u!50 &2044748378697298663
 Rigidbody2D:
   serializedVersion: 4

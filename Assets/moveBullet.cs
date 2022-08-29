@@ -12,7 +12,11 @@ public class moveBullet : MonoBehaviour
     public float scaleUpX;
     public bool stopGrowingpls;
     public bool incrementalGrowth;
+    public bool lockOnGun;
+    public GameObject gunOrigin;
+    public float offset;
     public Vector3 startSize;
+    GameObject spawnLocation;
     // Start is called before the first frame update
     void Start()
     {
@@ -46,7 +50,20 @@ public class moveBullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if(lockOnGun)
+        {
+            if(gunOrigin.GetComponent<SpriteRenderer>().flipY)
+            {
+                spawnLocation = gunOrigin.transform.Find("bulletSpawnFlipped").gameObject;
+            }
+            else
+            {
+                spawnLocation = gunOrigin.transform.Find("bulletSpawn").gameObject;
+            }
+            gameObject.transform.position = spawnLocation.transform.position;
+            gameObject.transform.rotation = spawnLocation.transform.rotation;
+            gameObject.transform.Rotate(0, 0, offset);
+        }
     }
     private void FixedUpdate()
     {

@@ -99,7 +99,7 @@ public class bossAttack: MonoBehaviour
     {
         yield return new WaitForSeconds(attackInfo.rotationConfig.timeToStart);
         Vector3 saveRotation = gun.transform.rotation.eulerAngles;
-        float rotationSteps = 30;
+        float rotationSteps = 500;
         float degreesPerRotation = (attackInfo.rotationConfig.degrees / rotationSteps);
         if(gun.GetComponent<SpriteRenderer>().flipY)
         {
@@ -109,8 +109,11 @@ public class bossAttack: MonoBehaviour
         {
             for(int i = 0; i < rotationSteps; i++)
             {
-                gun.transform.Rotate(new Vector3(0, 0, degreesPerRotation));
-                yield return new WaitForSeconds(0.1f / attackInfo.rotationConfig.speedMultiplier);
+                if (gun != null)
+                {
+                    gun.transform.Rotate(new Vector3(0, 0, degreesPerRotation));
+                    yield return new WaitForSeconds(0.01f / attackInfo.rotationConfig.speedMultiplier);
+                }
             }
             degreesPerRotation *= -1;
         }
@@ -140,10 +143,16 @@ public class bossAttack: MonoBehaviour
                     float angleChunks = attackInfo.multiShootConfig.angle / attackInfo.multiShootConfig.bulletMultiplier;
 
                     GameObject shootBullet = Instantiate(attackInfo.bullet);
-                    createBullet(shootBullet, attackInfo);
+                    shootBullet.GetComponent<moveBullet>().offset = (angleChunks*j)+startAngle;
+                    createBullet(shootBullet, attackInfo, gunSource);
                     if(attackInfo.beam)
                     {
-                        StartCoroutine(destroyBeam(shootBullet, attackInfo.beamConfig.lifespan, gunSource));
+                        bool kil = false;
+                        if(i+1 >= attackInfo.bulletAmmount)
+                        {
+                            kil = true;
+                        }
+                        StartCoroutine(destroyBeam(shootBullet, attackInfo.beamConfig.lifespan, gunSource, kil));
                     }
                     Debug.Log(shootBullet.GetComponent<SpriteRenderer>().material.GetColor("_Color"));
                     changeColour(attackInfo.colourConfig.stage, attackInfo.colourConfig.Colour, shootBullet);
@@ -167,10 +176,15 @@ public class bossAttack: MonoBehaviour
             else
             {
                 GameObject shootBullet = Instantiate(attackInfo.bullet);
-                createBullet(shootBullet, attackInfo);
+                createBullet(shootBullet, attackInfo, gunSource);
                 if (attackInfo.beam)
                 {
-                    StartCoroutine(destroyBeam(shootBullet, attackInfo.beamConfig.lifespan,gunSource));
+                    bool kil = false;
+                    if (i+1 >= attackInfo.bulletAmmount)
+                    {
+                        kil = true;
+                    }
+                    StartCoroutine(destroyBeam(shootBullet, attackInfo.beamConfig.lifespan,gunSource, kil));
                 }
                 Debug.Log(shootBullet.GetComponent<SpriteRenderer>().material.GetColor("_Color"));
                 changeColour(attackInfo.colourConfig.stage, attackInfo.colourConfig.Colour, shootBullet);
@@ -200,20 +214,25 @@ public class bossAttack: MonoBehaviour
             Destroy(gunSource);
         }
     }
-    public static GameObject createBullet(GameObject shootBullet, gunSpawnInfo.spawnedGun attackInfo)
+    public static GameObject createBullet(GameObject shootBullet, gunSpawnInfo.spawnedGun attackInfo, GameObject gunSource)
     {
         shootBullet.GetComponent<moveBullet>().scaleUpX = attackInfo.scaleX;
         shootBullet.GetComponent<moveBullet>().scaleUpY = attackInfo.scaleY;
+        shootBullet.GetComponent<moveBullet>().lockOnGun = attackInfo.rotationConfig.lockedToGun;
+        shootBullet.GetComponent<moveBullet>().gunOrigin = gunSource;
         shootBullet.GetComponent<moveBullet>().incrementalGrowth = attackInfo.incrementalGrowth;
         shootBullet.GetComponent<moveBullet>().growthMultiplier = attackInfo.growthMultiplier;
         shootBullet.GetComponent<damagePlayer>().damage = attackInfo.bulletDamage;
         return shootBullet;
     }
-    IEnumerator destroyBeam(GameObject shootBullet, float time, GameObject gunSource)
+    IEnumerator destroyBeam(GameObject shootBullet, float time, GameObject gunSource, bool kil)
     {
         yield return new WaitForSeconds(time);
         Destroy(shootBullet);
-        Destroy(gunSource);
+        if(kil)
+        {
+            Destroy(gunSource);
+        }
     }
     IEnumerator pickAttack()
     {
@@ -335,4 +354,5 @@ public class rotationSettings
     public float degrees;
     public float speedMultiplier;
     public bool rotatesBack;
+    public bool lockedToGun;
 }
