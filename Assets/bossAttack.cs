@@ -7,26 +7,26 @@ public class bossAttack: MonoBehaviour
     [System.Serializable]
     public struct attackBasic
     {
-        public enum attackType
+        public enum attackType //If you wish to add a brand new attack type, do that here:
         {
             shootDown,
             wait,
             summonGun
         }
-        public attackType Type;
+        public attackType Type; //needed info to initialize an attack
         public float duration;
         public GameObject bullet;
-        public gunSpawnInfo spawnInfo;
+        public gunSpawnInfo spawnInfo; //info used for the "summon gun" attack
 
     }
-    public List<attackBasic> attackBasicList = new List<attackBasic>();
+    public List<attackBasic> attackBasicList = new List<attackBasic>(); //the list of attacks the boss can have
     public List<int> hpThreshold = new List<int>();
-    public GameObject[] test;
+    public GameObject[] test; //Ignore, this is a test list to document the amount of bullets on the screen for stress testing
 
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(pickAttack());
+        StartCoroutine(pickAttack()); //makes the boss pick attacks when it loads in
     }
 
     // Update is called once per frame
@@ -34,7 +34,7 @@ public class bossAttack: MonoBehaviour
     {
         
     }
-    IEnumerator shootBullets(attackBasic attackInfo)
+    IEnumerator shootBullets(attackBasic attackInfo) //outdated
     {
         while(true)
         {
@@ -115,7 +115,18 @@ public class bossAttack: MonoBehaviour
                     yield return new WaitForSeconds(0.01f / attackInfo.rotationConfig.speedMultiplier);
                 }
             }
-            degreesPerRotation *= -1;
+            if(attackInfo.rotationConfig.rotatesBack)
+            {
+                degreesPerRotation *= -1;
+            }
+            else
+            {
+                if(gun != null)
+                {
+                    Quaternion rotation = Quaternion.Euler(saveRotation);
+                    gun.transform.rotation = rotation;
+                }
+            }
         }
     }
     IEnumerator followPlayer(gunSpawnInfo.spawnedGun attackInfo, GameObject gun)
