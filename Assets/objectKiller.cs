@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class objectKiller : MonoBehaviour
 {
+    private bossAttack instansiatedBossAttack;
     // Start is called before the first frame update
     public enum kil{
         up,
@@ -61,7 +62,7 @@ public class objectKiller : MonoBehaviour
                 }
             case kil.all:
                 {
-                    if(!collision.GetComponent<moveBullet>().isBeam)
+                    if(!collision.GetComponent<moveBullet>().bulletInfo.beam)
                     {
                         Destroy(collision.gameObject);
                     }
@@ -69,15 +70,28 @@ public class objectKiller : MonoBehaviour
                 }
         }
     }
-    public static void kill(GameObject collision)
+    public void kill(GameObject collision)
     {
-        if (collision.GetComponent<moveBullet>().isBeam)
+        if (collision.GetComponent<moveBullet>().bulletInfo.beam)
         {
             //collision.GetComponent<moveBullet>().stopGrowingpls = true;
         }
         else
         {
+            if(collision.GetComponent<moveBullet>() != null)
+            {
+                if(collision.GetComponent<moveBullet>().shootsWhenDie && collision.GetComponent<moveBullet>().dieProperties != null)
+                {
+                    Debug.Log("SHATTER!");
+                    GameObject ghostObject = new GameObject("killSpawn");
+                    ghostObject.transform.position = collision.transform.position;
+                    ghostObject.transform.rotation = collision.transform.rotation;
+                    ghostObject.transform.Rotate(0, 0, 180);
+                    StartCoroutine(instansiatedBossAttack.spawnBullets(collision.GetComponent<moveBullet>().dieProperties, ghostObject.gameObject));
+                }
+            }
             Destroy(collision.gameObject);
         }
+
     }
 }

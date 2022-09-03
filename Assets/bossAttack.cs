@@ -50,12 +50,13 @@ public class bossAttack: MonoBehaviour
         {
             GameObject gunSpawned = Instantiate(attackInfo.spawnInfo.gunInfo[i].gun);
             Vector2 savedScale = gunSpawned.transform.localScale;
+            attackInfo.spawnInfo.gunInfo[i].bulletConfig.lockedToGun = attackInfo.spawnInfo.gunInfo[i].rotationConfig.lockedToGun;
             gunSpawned.transform.localScale = new Vector2(savedScale.x * attackInfo.spawnInfo.gunInfo[i].gunScaleX, savedScale.y * attackInfo.spawnInfo.gunInfo[i].gunScaleY);
             gunSpawned.transform.position = new Vector3(attackInfo.spawnInfo.gunInfo[i].spawnLocation.transform.position.x, attackInfo.spawnInfo.gunInfo[i].spawnLocation.transform.position.y, -3);
             gunSpawned.GetComponent<SpriteRenderer>().sprite = attackInfo.spawnInfo.gunInfo[i].gunTexture;
-            if(gunSpawned.GetComponent<SpriteRenderer>().sharedMaterial == attackInfo.spawnInfo.gunInfo[i].bullet.GetComponent<SpriteRenderer>().sharedMaterial)
+            if(gunSpawned.GetComponent<SpriteRenderer>().sharedMaterial == attackInfo.spawnInfo.gunInfo[i].bulletConfig.bullet.GetComponent<SpriteRenderer>().sharedMaterial)
             {
-                changeColour(attackInfo.spawnInfo.gunInfo[i].colourConfig.stage, attackInfo.spawnInfo.gunInfo[i].colourConfig.Colour, gunSpawned);
+                changeColour(attackInfo.spawnInfo.gunInfo[i].bulletConfig.colourConfig.stage, attackInfo.spawnInfo.gunInfo[i].bulletConfig.colourConfig.Colour, gunSpawned);
             }
             Vector3 newScale = gameObject.transform.localScale;
             if (attackInfo.spawnInfo.gunInfo[i].shootTowardsPlayer != true)
@@ -90,7 +91,7 @@ public class bossAttack: MonoBehaviour
             {
                 StartCoroutine(rotateGun(attackInfo.spawnInfo.gunInfo[i], gunSpawned));
             }
-            StartCoroutine(spawnBullets(attackInfo.spawnInfo.gunInfo[i], gunSpawned));
+            StartCoroutine(spawnBullets(attackInfo.spawnInfo.gunInfo[i].bulletConfig, gunSpawned, attackInfo.spawnInfo.gunInfo[i].shatterConfig));
 
             yield return new WaitForSeconds(attackInfo.spawnInfo.spawnDelay);
         }
@@ -142,99 +143,186 @@ public class bossAttack: MonoBehaviour
             
         }
     }
-    IEnumerator spawnBullets(gunSpawnInfo.spawnedGun attackInfo, GameObject gunSource)
+
+
+    public IEnumerator spawnBullets(BulletSimple attackInfo, GameObject gunSource, shatterShotConfig shatterConfig = null)
     {
+        yield return new WaitForSeconds(attackInfo.delayBeforeShooting);
         for (int i = 0; i < attackInfo.bulletAmmount; i++)
         {
-            if (attackInfo.multiShoot)
+            if(gunSource != null)
             {
-                for(int j = 0; j < attackInfo.multiShootConfig.bulletMultiplier; j++)
+                if (attackInfo.multiShoot)
                 {
-                    float startAngle = (attackInfo.multiShootConfig.angle / 2) * -1;
-                    float angleChunks = attackInfo.multiShootConfig.angle / attackInfo.multiShootConfig.bulletMultiplier;
+                    for(int j = 0; j < attackInfo.multiShootConfig.bulletMultiplier; j++)
+                    {
+                        float startAngle = (attackInfo.multiShootConfig.angle / 2) * -1;
+                        float angleChunks = attackInfo.multiShootConfig.angle / (attackInfo.multiShootConfig.bulletMultiplier-1);
 
+                        GameObject shootBullet = Instantiate(attackInfo.bullet);
+                        shootBullet.GetComponent<moveBullet>().offset = (angleChunks*j)+startAngle;
+                        if (shatterConfig != null)
+                        {
+                            createBullet(shootBullet, attackInfo, gunSource, shatterConfig);
+                        }
+                        else
+                        {
+                            createBullet(shootBullet, attackInfo, gunSource);
+                        }
+                        if (attackInfo.beam)
+                        {
+                            bool kil = false;
+                            if(i+1 >= attackInfo.bulletAmmount)
+                            {
+                                kil = true;
+                            }
+                            StartCoroutine(destroyBeam(shootBullet, attackInfo.beamConfig.lifespan, gunSource, kil));
+                        }
+                        Debug.Log(shootBullet.GetComponent<SpriteRenderer>().material.GetColor("_Color"));
+                        changeColour(attackInfo.colourConfig.stage, attackInfo.colourConfig.Colour, shootBullet);
+                        if(attackInfo.colourConfig.colourMode == colourChange.mode.line)
+                        {
+                            attackInfo.colourConfig.stage = changeColourState(attackInfo.colourConfig.stage, attackInfo.colourConfig.Colour.Count);
+                        }
+                        if (attackInfo.colourConfig.colourMode == colourChange.mode.random)
+                        {
+                            int newstageL = Random.Range(0, attackInfo.colourConfig.Colour.Count);
+                            attackInfo.colourConfig.stage = changeColourState(newstageL, attackInfo.colourConfig.Colour.Count);
+                        }
+                        test = GameObject.FindGameObjectsWithTag("bullet");
+                        Debug.Log(test.Length);
+                        float width = gunSource.GetComponent<SpriteRenderer>().bounds.size.x;
+                        if (gunSource.transform.Find("bulletSpawn") != null)
+                        {
+                            if (gunSource.GetComponent<SpriteRenderer>().flipY)
+                            {
+                                shootBullet.transform.position = placeBullet(gunSource.transform.Find("bulletSpawnFlipped").gameObject);
+                            }
+                            else
+                            {
+                                shootBullet.transform.position = placeBullet(gunSource.transform.Find("bulletSpawn").gameObject);
+                            }
+                        }
+                        else
+                        {
+                            Debug.Log(placeBullet(gunSource));
+                            shootBullet.transform.position = placeBullet(gunSource);
+                        }
+                        shootBullet.transform.rotation = gunSource.transform.rotation;
+                        shootBullet.transform.Rotate(new Vector3(0, 0, shootBullet.transform.rotation.z + startAngle + (angleChunks*j)));
+                        shootBullet.GetComponent<moveBullet>().movementSpeedMultiplier = attackInfo.bulletSpeedMultiplier;
+                        if(shatterConfig != null)
+                        {
+                            if (shatterConfig.travelShot != null && shatterConfig.shootsWhileTraveling && gunSource != null)
+                            {
+                                splitShot(shatterConfig.travelShot, shootBullet);
+                            }
+                        }
+                    }
+                }
+                else
+                {
                     GameObject shootBullet = Instantiate(attackInfo.bullet);
-                    shootBullet.GetComponent<moveBullet>().offset = (angleChunks*j)+startAngle;
-                    createBullet(shootBullet, attackInfo, gunSource);
-                    if(attackInfo.beam)
+                    if(shatterConfig != null)
+                    {
+                        createBullet(shootBullet, attackInfo, gunSource, shatterConfig);
+                    }
+                    else
+                    {
+                        createBullet(shootBullet, attackInfo, gunSource);
+                    }
+                    if (attackInfo.beam)
                     {
                         bool kil = false;
-                        if(i+1 >= attackInfo.bulletAmmount)
+                        if (i+1 >= attackInfo.bulletAmmount)
                         {
                             kil = true;
                         }
-                        StartCoroutine(destroyBeam(shootBullet, attackInfo.beamConfig.lifespan, gunSource, kil));
+                        StartCoroutine(destroyBeam(shootBullet, attackInfo.beamConfig.lifespan,gunSource, kil));
                     }
                     Debug.Log(shootBullet.GetComponent<SpriteRenderer>().material.GetColor("_Color"));
                     changeColour(attackInfo.colourConfig.stage, attackInfo.colourConfig.Colour, shootBullet);
                     test = GameObject.FindGameObjectsWithTag("bullet");
                     Debug.Log(test.Length);
                     float width = gunSource.GetComponent<SpriteRenderer>().bounds.size.x;
-                    if(gunSource.GetComponent<SpriteRenderer>().flipY)
+                    if(gunSource.transform.Find("bulletSpawn") != null)
                     {
-                        shootBullet.transform.position = new Vector3(gunSource.transform.Find("bulletSpawnFlipped").position.x, gunSource.transform.Find("bulletSpawnFlipped").position.y, -3);
+                        if (gunSource.GetComponent<SpriteRenderer>().flipY)
+                        {
+                            shootBullet.transform.position = placeBullet(gunSource.transform.Find("bulletSpawnFlipped").gameObject);
+                        }
+                        else
+                        {
+                            shootBullet.transform.position = placeBullet(gunSource.transform.Find("bulletSpawn").gameObject);
+                        }
                     }
                     else
                     {
-                        shootBullet.transform.position = new Vector3(gunSource.transform.Find("bulletSpawn").position.x, gunSource.transform.Find("bulletSpawn").position.y, -3);
+                        Debug.Log(placeBullet(gunSource));
+                        shootBullet.transform.position = placeBullet(gunSource);
                     }
                     shootBullet.transform.rotation = gunSource.transform.rotation;
-                    shootBullet.transform.Rotate(new Vector3(0, 0, shootBullet.transform.rotation.z + startAngle + (angleChunks*j)));
                     shootBullet.GetComponent<moveBullet>().movementSpeedMultiplier = attackInfo.bulletSpeedMultiplier;
+                    attackInfo.colourConfig.stage = changeColourState(attackInfo.colourConfig.stage, attackInfo.colourConfig.Colour.Count);
+                    if (shatterConfig != null)
+                    {
+                        if (shatterConfig.travelShot != null && shatterConfig.shootsWhileTraveling && gunSource != null)
+                        {
+                            splitShot(shatterConfig.travelShot, shootBullet);
+                        }
+                    }
+                }
 
+                yield return new WaitForSeconds(attackInfo.bulletDelay);
+                if(attackInfo.colourConfig.colourMode == colourChange.mode.row)
+                {
+                    attackInfo.colourConfig.stage = changeColourState(attackInfo.colourConfig.stage, attackInfo.colourConfig.Colour.Count);
                 }
             }
             else
             {
-                GameObject shootBullet = Instantiate(attackInfo.bullet);
-                createBullet(shootBullet, attackInfo, gunSource);
-                if (attackInfo.beam)
-                {
-                    bool kil = false;
-                    if (i+1 >= attackInfo.bulletAmmount)
-                    {
-                        kil = true;
-                    }
-                    StartCoroutine(destroyBeam(shootBullet, attackInfo.beamConfig.lifespan,gunSource, kil));
-                }
-                Debug.Log(shootBullet.GetComponent<SpriteRenderer>().material.GetColor("_Color"));
-                changeColour(attackInfo.colourConfig.stage, attackInfo.colourConfig.Colour, shootBullet);
-                test = GameObject.FindGameObjectsWithTag("bullet");
-                Debug.Log(test.Length);
-                float width = gunSource.GetComponent<SpriteRenderer>().bounds.size.x;
-                if (gunSource.GetComponent<SpriteRenderer>().flipY)
-                {
-                    shootBullet.transform.position = gunSource.transform.Find("bulletSpawnFlipped").position;
-                }
-                else
-                {
-                    shootBullet.transform.position = gunSource.transform.Find("bulletSpawn").position;
-                }
-                shootBullet.transform.rotation = gunSource.transform.rotation;
-                shootBullet.GetComponent<moveBullet>().movementSpeedMultiplier = attackInfo.bulletSpeedMultiplier;
-            }
-            yield return new WaitForSeconds(attackInfo.bulletDelay);
-            attackInfo.colourConfig.stage++;
-            if (attackInfo.colourConfig.stage >= attackInfo.colourConfig.Colour.Count)
-            {
-                attackInfo.colourConfig.stage = 0;
+                break;
             }
         }
-        if(!attackInfo.beam)
+        if(gunSource != null)
         {
-            Destroy(gunSource);
+            if (!attackInfo.beam && gunSource.GetComponent<moveBullet>() == null)
+            {
+                Destroy(gunSource);
+            }
         }
     }
-    public static GameObject createBullet(GameObject shootBullet, gunSpawnInfo.spawnedGun attackInfo, GameObject gunSource)
+    public void splitShot(BulletSimple information, GameObject source)
     {
-        shootBullet.GetComponent<moveBullet>().scaleUpX = attackInfo.scaleX;
-        shootBullet.GetComponent<moveBullet>().scaleUpY = attackInfo.scaleY;
-        shootBullet.GetComponent<moveBullet>().lockOnGun = attackInfo.rotationConfig.lockedToGun;
-        shootBullet.GetComponent<moveBullet>().gunOrigin = gunSource;
-        shootBullet.GetComponent<moveBullet>().incrementalGrowth = attackInfo.incrementalGrowth;
-        shootBullet.GetComponent<moveBullet>().growthMultiplier = attackInfo.growthMultiplier;
+        StartCoroutine(spawnBullets(information, source));
+    }
+    public static GameObject createBullet(GameObject shootBullet, BulletSimple attackInfo, GameObject gunSource, shatterShotConfig shatterConfig = null)
+    {
+        shootBullet.GetComponent<moveBullet>().bulletInfo = attackInfo;
         shootBullet.GetComponent<damagePlayer>().damage = attackInfo.bulletDamage;
+        shootBullet.GetComponent<moveBullet>().gunOrigin = gunSource;
+        if(shatterConfig != null)
+        {
+            if(shatterConfig.destoyShoot != null && shatterConfig.shootsWhenDestroyed)
+            {
+                shootBullet.GetComponent<moveBullet>().shootsWhenDie = shatterConfig.shootsWhenDestroyed;
+                shootBullet.GetComponent<moveBullet>().dieProperties = shatterConfig.destoyShoot;
+            }
+        }
         return shootBullet;
+    }
+    public static Vector3 placeBullet(GameObject location)
+    {
+        return new Vector3(location.transform.position.x, location.transform.position.y, -3);
+    }
+    public int changeColourState(int stage, int count)
+    {
+        stage++;
+        if(stage >= count)
+        {
+            stage = 0;
+        }
+        return stage;
     }
     IEnumerator destroyBeam(GameObject shootBullet, float time, GameObject gunSource, bool kil)
     {
@@ -290,10 +378,6 @@ public class bossAttack: MonoBehaviour
             }
         }
     }
-    public static void summonBullet(GameObject gunSource, gunSpawnInfo.spawnedGun attackInfo, float angle)
-    {
-
-    }
     void changeColour(int stage, List<Color> ColourList, GameObject whatToChange)
     {
         whatToChange.GetComponent<SpriteRenderer>().material.SetColor("_Color", ColourList[stage]);
@@ -308,29 +392,17 @@ public class gunSpawnInfo
     {
         public GameObject spawnLocation;
         public float rotation;
-        public GameObject bullet;
         public GameObject gun;
         public Sprite gunTexture;
-        public float bulletDelay;
-        public float bulletAmmount;
-        public float bulletDamage;
-        public float bulletSpeedMultiplier;
-        public float growthMultiplier;
-        public float scaleX; //bullet scale (is a multiplier)
-        public float scaleY;
         public float gunScaleX;
         public float gunScaleY;
         public bool shootTowardsPlayer;
-        public bool multiShoot;
         public bool tracksPlayer;
-        public bool incrementalGrowth;
-        public bool beam;
         public float trackingAccuracy;
-        public multiShootSettings multiShootConfig;
-        public colourChange colourConfig;
-        public beamSettings beamConfig;
         public bool rotatesOverTime;
+        public BulletSimple bulletConfig;
         public rotationSettings rotationConfig;
+        public shatterShotConfig shatterConfig;
         int stage;
         public enum weaponSpawned
         {
@@ -350,13 +422,19 @@ public class multiShootSettings
 public class colourChange
 {
     public int stage;
+    public enum mode
+    {
+        line,
+        row,
+        random
+    }
+    public mode colourMode;
     public List<Color> Colour = new List<Color>();
 }
 [System.Serializable]
 public class beamSettings
 {
     public float lifespan;
-    public Sprite layerOntopSprite;
 }
 [System.Serializable]
 public class rotationSettings
@@ -366,4 +444,35 @@ public class rotationSettings
     public float speedMultiplier;
     public bool rotatesBack;
     public bool lockedToGun;
+}
+[System.Serializable]
+public class BulletSimple
+{
+    public float delayBeforeShooting;
+    //[HideInInspector]
+    public bool lockedToGun;
+    public GameObject bullet;
+    public float bulletDelay;
+    public float bulletAmmount;
+    public float bulletDamage;
+    public float bulletSpeedMultiplier;
+    public float growthMultiplier;
+    public float scaleX; //bullet scale (is a multiplier)
+    public float scaleY;
+    public bool multiShoot;
+    public bool incrementalGrowth;
+    public bool beam;
+    public multiShootSettings multiShootConfig;
+    public colourChange colourConfig;
+    public beamSettings beamConfig;
+}
+
+[System.Serializable]
+public class shatterShotConfig
+{
+    public bool shootsWhileTraveling;
+    public BulletSimple travelShot;
+    public bool shootsWhenDestroyed;
+    public BulletSimple destoyShoot;
+
 }

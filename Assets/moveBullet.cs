@@ -5,43 +5,43 @@ using UnityEngine;
 public class moveBullet : MonoBehaviour
 {
     public float movementSpeedMultiplier;
-    public float growthMultiplier;
-    public bool isBeam;
     float growthRate;
-    public float scaleUpY;
-    public float scaleUpX;
     public bool stopGrowingpls;
-    public bool incrementalGrowth;
-    public bool lockOnGun;
     public GameObject gunOrigin;
     public float offset;
     public Vector3 startSize;
     GameObject spawnLocation;
+    public bool shootsWhenDestroyed;
+    public bool shootsWhileTraveling;
+    //[HideInInspector]
+    public BulletSimple bulletInfo;
+    public BulletSimple dieProperties;
+    public bool shootsWhenDie;
     // Start is called before the first frame update
     void Start()
     {
         startSize = gameObject.transform.localScale;
         growthRate = 0.1f * movementSpeedMultiplier;
-        if(!incrementalGrowth)
+        if(!bulletInfo.incrementalGrowth)
         {
-            if(!isBeam)
+            if(!bulletInfo.beam)
             {
-                gameObject.transform.localScale = new Vector2(gameObject.transform.localScale.x * scaleUpX, gameObject.transform.localScale.y * scaleUpY);
+                gameObject.transform.localScale = new Vector2(gameObject.transform.localScale.x * bulletInfo.scaleX, gameObject.transform.localScale.y * bulletInfo.scaleY);
             }
             else
             {
-                gameObject.GetComponent<SpriteRenderer>().size = new Vector2(startSize.x, gameObject.transform.localScale.y * scaleUpY);
+                gameObject.GetComponent<SpriteRenderer>().size = new Vector2(startSize.x, gameObject.transform.localScale.y * bulletInfo.scaleY);
             }
         }
         else
         {
-            if (!isBeam)
+            if (!bulletInfo.beam)
             {
-                gameObject.transform.localScale = new Vector2((gameObject.transform.localScale.x * scaleUpX)/10, (gameObject.transform.localScale.y * scaleUpY)/10);
+                gameObject.transform.localScale = new Vector2((gameObject.transform.localScale.x * bulletInfo.scaleX)/10, (gameObject.transform.localScale.y * bulletInfo.scaleY)/10);
             }
             else
             {
-                gameObject.GetComponent<SpriteRenderer>().size = new Vector2(startSize.x, (gameObject.transform.localScale.y * scaleUpY)/10);
+                gameObject.GetComponent<SpriteRenderer>().size = new Vector2(startSize.x, (gameObject.transform.localScale.y * bulletInfo.scaleY)/10);
             }
         }
 
@@ -50,7 +50,7 @@ public class moveBullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(lockOnGun)
+        if(bulletInfo.lockedToGun)
         {
             if(gunOrigin.GetComponent<SpriteRenderer>().flipY)
             {
@@ -67,18 +67,18 @@ public class moveBullet : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if(isBeam)
+        if(bulletInfo.beam)
         {
             var saveSize = gameObject.GetComponent<SpriteRenderer>().size;
             if (!stopGrowingpls)
             {
                 saveSize.x += growthRate;
             }
-            if(incrementalGrowth)
+            if(bulletInfo.beam)
             {
-                if(saveSize.y < startSize.y * scaleUpY)
+                if(saveSize.y < startSize.y * bulletInfo.scaleY)
                 {
-                        saveSize.y += ((saveSize.y * scaleUpY) / 10) * growthMultiplier;
+                        saveSize.y += ((saveSize.y * bulletInfo.scaleY) / 10) * bulletInfo.growthMultiplier;
                 }
             }
             gameObject.GetComponent<SpriteRenderer>().size = saveSize;
@@ -86,21 +86,21 @@ public class moveBullet : MonoBehaviour
         }
         else
         {
-            if (incrementalGrowth)
+            if (bulletInfo.incrementalGrowth)
             {
                 var saveSize = gameObject.transform.localScale;
-                if (saveSize.y < startSize.y * scaleUpY)
+                if (saveSize.y < startSize.y * bulletInfo.scaleY)
                 {
-                    saveSize.y += ((gameObject.transform.localScale.y * scaleUpY) / 10) * growthMultiplier;
+                    saveSize.y += ((gameObject.transform.localScale.y * bulletInfo.scaleY) / 10) * bulletInfo.growthMultiplier;
                 }
-                if (saveSize.x < startSize.x * scaleUpX)
+                if (saveSize.x < startSize.x * bulletInfo.scaleX)
                 {
-                    saveSize.x += ((gameObject.transform.localScale.x * scaleUpX) / 10) * growthMultiplier;
+                    saveSize.x += ((gameObject.transform.localScale.x * bulletInfo.scaleX) / 10) * bulletInfo.growthMultiplier;
                 }
                 gameObject.transform.localScale = saveSize;
             }
             gameObject.GetComponent<Rigidbody2D>().velocity = gameObject.transform.right * movementSpeedMultiplier;
         }
-        growthRate = growthRate + (0.1f * movementSpeedMultiplier);
+        growthRate = growthRate + (0.1f * (movementSpeedMultiplier/5));
     }
 }
