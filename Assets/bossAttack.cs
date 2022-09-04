@@ -296,11 +296,12 @@ public class bossAttack: MonoBehaviour
     {
         StartCoroutine(spawnBullets(information, source));
     }
-    public static GameObject createBullet(GameObject shootBullet, BulletSimple attackInfo, GameObject gunSource, shatterShotConfig shatterConfig = null)
+    public GameObject createBullet(GameObject shootBullet, BulletSimple attackInfo, GameObject gunSource, shatterShotConfig shatterConfig = null)
     {
         shootBullet.GetComponent<moveBullet>().bulletInfo = attackInfo;
         shootBullet.GetComponent<damagePlayer>().damage = attackInfo.bulletDamage;
         shootBullet.GetComponent<moveBullet>().gunOrigin = gunSource;
+        shootBullet.GetComponent<moveBullet>().sourceScript = this;
         if(shatterConfig != null)
         {
             if(shatterConfig.destoyShoot != null && shatterConfig.shootsWhenDestroyed)

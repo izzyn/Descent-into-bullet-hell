@@ -17,6 +17,7 @@ public class moveBullet : MonoBehaviour
     public BulletSimple bulletInfo;
     public BulletSimple dieProperties;
     public bool shootsWhenDie;
+    public bossAttack sourceScript;
     // Start is called before the first frame update
     void Start()
     {

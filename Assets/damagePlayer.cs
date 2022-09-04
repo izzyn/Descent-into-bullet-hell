@@ -28,6 +28,8 @@ public class damagePlayer : MonoBehaviour
                 if (collision.gameObject.GetComponent<hpAndLives>().invincible != true)
                 {
                     collision.gameObject.GetComponent<hpAndLives>().HP = collision.gameObject.GetComponent<hpAndLives>().HP - damage;
+                    var invicible = collision.GetComponent<hpAndLives>().beInvincible(0.5f);
+                    collision.gameObject.GetComponent<hpAndLives>().StartCoroutine(invicible);
                     collision.gameObject.GetComponent<hpAndLives>().displayUpdater.updateThing();
                     if (removeWhenHit)
                     {

@@ -84,8 +84,10 @@ public class objectKiller : MonoBehaviour
                 {
                     Debug.Log("SHATTER!");
                     GameObject ghostObject = new GameObject("killSpawn");
+                    ghostObject.AddComponent<SpriteRenderer>();
                     ghostObject.transform.position = collision.transform.position;
                     ghostObject.transform.rotation = collision.transform.rotation;
+                    instansiatedBossAttack = collision.GetComponent<moveBullet>().sourceScript;
                     ghostObject.transform.Rotate(0, 0, 180);
                     StartCoroutine(instansiatedBossAttack.spawnBullets(collision.GetComponent<moveBullet>().dieProperties, ghostObject.gameObject));
                 }

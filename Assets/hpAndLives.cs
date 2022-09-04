@@ -13,6 +13,7 @@ public class hpAndLives : MonoBehaviour
     public displayHPandLives displayUpdater;
     float startingHP;
     int startingLives;
+    int invincibilityStack;
 
     // Start is called before the first frame update
     void Start()
@@ -31,7 +32,7 @@ public class hpAndLives : MonoBehaviour
                 HP = startingHP;
                 Lives--;
                 displayUpdater.updateThing();
-                StartCoroutine(beInvincible());
+                StartCoroutine(beInvincible(2f));
             }
             else
             {
@@ -40,10 +41,15 @@ public class hpAndLives : MonoBehaviour
 
         }
     }
-    IEnumerator beInvincible()
+    public IEnumerator beInvincible(float time)
     {
+        invincibilityStack++;
         invincible = true;
-        yield return new WaitForSeconds(5f);
-        invincible = false;
+        yield return new WaitForSeconds(time);
+        invincibilityStack--;
+        if(invincibilityStack == 0)
+        {
+            invincible = false;
+        }
     }
 }
