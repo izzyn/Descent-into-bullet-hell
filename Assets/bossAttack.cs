@@ -176,7 +176,11 @@ public class bossAttack: MonoBehaviour
                             {
                                 kil = true;
                             }
-                            StartCoroutine(destroyBeam(shootBullet, attackInfo.beamConfig.lifespan, gunSource, kil));
+                            StartCoroutine(destroyBullet(shootBullet, attackInfo.beamConfig.lifespan, gunSource, kil));
+                        }
+                        if (attackInfo.dieEarly)
+                        {
+                            StartCoroutine(destroyBullet(shootBullet, attackInfo.beamConfig.lifespan, gunSource));
                         }
                         Debug.Log(shootBullet.GetComponent<SpriteRenderer>().material.GetColor("_Color"));
                         changeColour(attackInfo.colourConfig.stage, attackInfo.colourConfig.Colour, shootBullet);
@@ -238,7 +242,11 @@ public class bossAttack: MonoBehaviour
                         {
                             kil = true;
                         }
-                        StartCoroutine(destroyBeam(shootBullet, attackInfo.beamConfig.lifespan,gunSource, kil));
+                        StartCoroutine(destroyBullet(shootBullet, attackInfo.beamConfig.lifespan,gunSource, kil));
+                    }
+                    if(attackInfo.dieEarly)
+                    {
+                        StartCoroutine(destroyBullet(shootBullet, attackInfo.beamConfig.lifespan, gunSource));
                     }
                     Debug.Log(shootBullet.GetComponent<SpriteRenderer>().material.GetColor("_Color"));
                     changeColour(attackInfo.colourConfig.stage, attackInfo.colourConfig.Colour, shootBullet);
@@ -312,7 +320,7 @@ public class bossAttack: MonoBehaviour
         }
         return shootBullet;
     }
-    public static Vector3 placeBullet(GameObject location)
+    public Vector3 placeBullet(GameObject location)
     {
         return new Vector3(location.transform.position.x, location.transform.position.y, -3);
     }
@@ -325,9 +333,15 @@ public class bossAttack: MonoBehaviour
         }
         return stage;
     }
-    IEnumerator destroyBeam(GameObject shootBullet, float time, GameObject gunSource, bool kil)
+    IEnumerator destroyBullet(GameObject shootBullet, float time, GameObject gunSource, bool kil = false)
     {
         yield return new WaitForSeconds(time);
+        if(shootBullet != null && shootBullet.GetComponent<moveBullet>().shootsWhenDie && shootBullet.GetComponent<moveBullet>().dieProperties != null)
+        {
+            objectKiller doThing = new objectKiller();
+            doThing.shatterDie(shootBullet);
+            Destroy(doThing);
+        }
         Destroy(shootBullet);
         if(kil)
         {
@@ -466,6 +480,7 @@ public class BulletSimple
     public multiShootSettings multiShootConfig;
     public colourChange colourConfig;
     public beamSettings beamConfig;
+    public bool dieEarly;
 }
 
 [System.Serializable]

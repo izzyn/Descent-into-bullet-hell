@@ -100,7 +100,7 @@ public class moveBullet : MonoBehaviour
                 }
                 gameObject.transform.localScale = saveSize;
             }
-            gameObject.GetComponent<Rigidbody2D>().velocity = gameObject.transform.right * movementSpeedMultiplier;
+            gameObject.GetComponent<Rigidbody2D>().velocity = gameObject.transform.right * (movementSpeedMultiplier*4);
         }
         growthRate = growthRate + (0.1f * (movementSpeedMultiplier/5));
     }
