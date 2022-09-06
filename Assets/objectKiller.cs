@@ -11,7 +11,8 @@ public class objectKiller : MonoBehaviour
         down,
         left,
         right,
-        all
+        all,
+        none
     }
     public kil direction;
     void Start()
@@ -89,14 +90,17 @@ public class objectKiller : MonoBehaviour
         }
 
     }
-    public void shatterDie(GameObject collision)
+    public void shatterDie(GameObject collision, bool diedEarly = false)
     {
         GameObject ghostObject = new GameObject("killSpawn");
         ghostObject.AddComponent<SpriteRenderer>();
         ghostObject.transform.position = collision.transform.position;
         ghostObject.transform.rotation = collision.transform.rotation;
         instansiatedBossAttack = collision.GetComponent<moveBullet>().sourceScript;
-        ghostObject.transform.Rotate(0, 0, 180);
+        if(!diedEarly)
+        {
+            ghostObject.transform.Rotate(0, 0, 180);
+        }
         StartCoroutine(instansiatedBossAttack.spawnBullets(collision.GetComponent<moveBullet>().dieProperties, ghostObject.gameObject));
     }
 }

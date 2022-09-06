@@ -1949,6 +1949,24 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1066600630059214012, guid: c3917a4d3e7647b41aca427d7e92170e, type: 3}
   m_PrefabInstance: {fileID: 2101806527}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1653694479 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2494599609475915386, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+  m_PrefabInstance: {fileID: 2494599609771583567}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1653694485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1653694479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 566f7ed6809d85648a8b5bd02089c478, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: 5
 --- !u!1001 &1654964420
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3490,6 +3508,10 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[1].bulletConfig.removeWhenHit
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[1].rotationConfig.lockedToGun
       value: 0
       objectReference: {fileID: 0}
@@ -3528,6 +3550,10 @@ PrefabInstance:
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[1].rotationConfig.speedMultiplier
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[1].shatterConfig.destoyShoot.beam
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[2].colourConfig.Colour.Array.size
@@ -3570,12 +3596,20 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[1].bulletConfig.removeWhenInvincible
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[1].multiShootConfig.bulletMultiplier
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[1].shatterConfig.shootsWhenDestroyed
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[1].shatterConfig.travelShot.dieEarly
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[2].multiShootConfig.bulletMultiplier
@@ -3635,7 +3669,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[1].shatterConfig.destoyShoot.dieEarly
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[1].shatterConfig.shootsWhileTraveling
@@ -3703,7 +3737,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[1].bulletConfig.multiShootConfig.angle
-      value: 45
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[1].colourConfig.Colour.Array.data[0].b
@@ -3847,7 +3881,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[1].shatterConfig.destoyShoot.beamConfig.lifespan
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[1].shatterConfig.destoyShoot.delayBeforeShooting
@@ -3859,7 +3893,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[1].bulletConfig.multiShootConfig.bulletMultiplier
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[1].shatterConfig.travelShot.bulletSpeedMultiplier
@@ -4011,7 +4045,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[1].shatterConfig.destoyShoot.multiShootConfig.angle
-      value: 90
+      value: 360
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[1].shatterConfig.travelShot.colourConfig.Colour.Array.size
@@ -4027,7 +4061,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[1].shatterConfig.destoyShoot.multiShootConfig.bulletMultiplier
-      value: 3
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[1].shatterConfig.travelShot.colourConfig.Colour.Array.data[0].b

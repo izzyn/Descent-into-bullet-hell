@@ -152,82 +152,21 @@ public class bossAttack: MonoBehaviour
         {
             if(gunSource != null)
             {
-                if (attackInfo.multiShoot)
+                for(int j = 0; j < attackInfo.multiShootConfig.bulletMultiplier; j++)
                 {
-                    for(int j = 0; j < attackInfo.multiShootConfig.bulletMultiplier; j++)
-                    {
-                        float startAngle = (attackInfo.multiShootConfig.angle / 2) * -1;
-                        float angleChunks = attackInfo.multiShootConfig.angle / (attackInfo.multiShootConfig.bulletMultiplier-1);
+                    float startAngle = (attackInfo.multiShootConfig.angle / 2) * -1;
+                    float angleChunks = attackInfo.multiShootConfig.angle / (attackInfo.multiShootConfig.bulletMultiplier - 1);
 
-                        GameObject shootBullet = Instantiate(attackInfo.bullet);
-                        shootBullet.GetComponent<moveBullet>().offset = (angleChunks*j)+startAngle;
-                        if (shatterConfig != null)
-                        {
-                            createBullet(shootBullet, attackInfo, gunSource, shatterConfig);
-                        }
-                        else
-                        {
-                            createBullet(shootBullet, attackInfo, gunSource);
-                        }
-                        if (attackInfo.beam)
-                        {
-                            bool kil = false;
-                            if(i+1 >= attackInfo.bulletAmmount)
-                            {
-                                kil = true;
-                            }
-                            StartCoroutine(destroyBullet(shootBullet, attackInfo.beamConfig.lifespan, gunSource, kil));
-                        }
-                        if (attackInfo.dieEarly)
-                        {
-                            StartCoroutine(destroyBullet(shootBullet, attackInfo.beamConfig.lifespan, gunSource));
-                        }
-                        Debug.Log(shootBullet.GetComponent<SpriteRenderer>().material.GetColor("_Color"));
-                        changeColour(attackInfo.colourConfig.stage, attackInfo.colourConfig.Colour, shootBullet);
-                        if(attackInfo.colourConfig.colourMode == colourChange.mode.line)
-                        {
-                            attackInfo.colourConfig.stage = changeColourState(attackInfo.colourConfig.stage, attackInfo.colourConfig.Colour.Count);
-                        }
-                        if (attackInfo.colourConfig.colourMode == colourChange.mode.random)
-                        {
-                            int newstageL = Random.Range(0, attackInfo.colourConfig.Colour.Count);
-                            attackInfo.colourConfig.stage = changeColourState(newstageL, attackInfo.colourConfig.Colour.Count);
-                        }
-                        test = GameObject.FindGameObjectsWithTag("bullet");
-                        Debug.Log(test.Length);
-                        float width = gunSource.GetComponent<SpriteRenderer>().bounds.size.x;
-                        if (gunSource.transform.Find("bulletSpawn") != null)
-                        {
-                            if (gunSource.GetComponent<SpriteRenderer>().flipY)
-                            {
-                                shootBullet.transform.position = placeBullet(gunSource.transform.Find("bulletSpawnFlipped").gameObject);
-                            }
-                            else
-                            {
-                                shootBullet.transform.position = placeBullet(gunSource.transform.Find("bulletSpawn").gameObject);
-                            }
-                        }
-                        else
-                        {
-                            Debug.Log(placeBullet(gunSource));
-                            shootBullet.transform.position = placeBullet(gunSource);
-                        }
-                        shootBullet.transform.rotation = gunSource.transform.rotation;
-                        shootBullet.transform.Rotate(new Vector3(0, 0, shootBullet.transform.rotation.z + startAngle + (angleChunks*j)));
-                        shootBullet.GetComponent<moveBullet>().movementSpeedMultiplier = attackInfo.bulletSpeedMultiplier;
-                        if(shatterConfig != null)
-                        {
-                            if (shatterConfig.travelShot != null && shatterConfig.shootsWhileTraveling && gunSource != null)
-                            {
-                                splitShot(shatterConfig.travelShot, shootBullet);
-                            }
-                        }
-                    }
-                }
-                else
-                {
                     GameObject shootBullet = Instantiate(attackInfo.bullet);
-                    if(shatterConfig != null)
+                    if(startAngle != 0)
+                    {
+                        shootBullet.GetComponent<moveBullet>().offset = (angleChunks * j) + startAngle;
+                    }
+                    else
+                    {
+                        shootBullet.GetComponent<moveBullet>().offset = 0;
+                    }
+                    if (shatterConfig != null)
                     {
                         createBullet(shootBullet, attackInfo, gunSource, shatterConfig);
                     }
@@ -238,22 +177,31 @@ public class bossAttack: MonoBehaviour
                     if (attackInfo.beam)
                     {
                         bool kil = false;
-                        if (i+1 >= attackInfo.bulletAmmount)
+                        if (i + 1 >= attackInfo.bulletAmmount)
                         {
                             kil = true;
                         }
-                        StartCoroutine(destroyBullet(shootBullet, attackInfo.beamConfig.lifespan,gunSource, kil));
+                        StartCoroutine(destroyBullet(shootBullet, attackInfo.beamConfig.lifespan, gunSource, kil));
                     }
-                    if(attackInfo.dieEarly)
+                    if (attackInfo.dieEarly)
                     {
                         StartCoroutine(destroyBullet(shootBullet, attackInfo.beamConfig.lifespan, gunSource));
                     }
                     Debug.Log(shootBullet.GetComponent<SpriteRenderer>().material.GetColor("_Color"));
                     changeColour(attackInfo.colourConfig.stage, attackInfo.colourConfig.Colour, shootBullet);
+                    if (attackInfo.colourConfig.colourMode == colourChange.mode.line)
+                    {
+                        attackInfo.colourConfig.stage = changeColourState(attackInfo.colourConfig.stage, attackInfo.colourConfig.Colour.Count);
+                    }
+                    if (attackInfo.colourConfig.colourMode == colourChange.mode.random)
+                    {
+                        int newstageL = Random.Range(0, attackInfo.colourConfig.Colour.Count);
+                        attackInfo.colourConfig.stage = changeColourState(newstageL, attackInfo.colourConfig.Colour.Count);
+                    }
                     test = GameObject.FindGameObjectsWithTag("bullet");
                     Debug.Log(test.Length);
                     float width = gunSource.GetComponent<SpriteRenderer>().bounds.size.x;
-                    if(gunSource.transform.Find("bulletSpawn") != null)
+                    if (gunSource.transform.Find("bulletSpawn") != null)
                     {
                         if (gunSource.GetComponent<SpriteRenderer>().flipY)
                         {
@@ -270,8 +218,11 @@ public class bossAttack: MonoBehaviour
                         shootBullet.transform.position = placeBullet(gunSource);
                     }
                     shootBullet.transform.rotation = gunSource.transform.rotation;
+                    if (startAngle != 0)
+                    {
+                        shootBullet.transform.Rotate(new Vector3(0, 0, shootBullet.transform.rotation.z + startAngle + (angleChunks * j)));
+                    }
                     shootBullet.GetComponent<moveBullet>().movementSpeedMultiplier = attackInfo.bulletSpeedMultiplier;
-                    attackInfo.colourConfig.stage = changeColourState(attackInfo.colourConfig.stage, attackInfo.colourConfig.Colour.Count);
                     if (shatterConfig != null)
                     {
                         if (shatterConfig.travelShot != null && shatterConfig.shootsWhileTraveling && gunSource != null)
@@ -308,6 +259,8 @@ public class bossAttack: MonoBehaviour
     {
         shootBullet.GetComponent<moveBullet>().bulletInfo = attackInfo;
         shootBullet.GetComponent<damagePlayer>().damage = attackInfo.bulletDamage;
+        shootBullet.GetComponent<damagePlayer>().removeWhenHit = attackInfo.removeHit;
+        shootBullet.GetComponent<damagePlayer>().removeWhenInvincible = attackInfo.removeInvincible;
         shootBullet.GetComponent<moveBullet>().gunOrigin = gunSource;
         shootBullet.GetComponent<moveBullet>().sourceScript = this;
         if(shatterConfig != null)
@@ -336,13 +289,14 @@ public class bossAttack: MonoBehaviour
     IEnumerator destroyBullet(GameObject shootBullet, float time, GameObject gunSource, bool kil = false)
     {
         yield return new WaitForSeconds(time);
-        if(shootBullet != null && shootBullet.GetComponent<moveBullet>().shootsWhenDie && shootBullet.GetComponent<moveBullet>().dieProperties != null)
+        if(shootBullet != null && shootBullet.GetComponent<moveBullet>().shootsWhenDie && shootBullet.GetComponent<moveBullet>().dieProperties != null && this.gameObject.GetComponent<objectKiller>() != null)
         {
-            objectKiller doThing = new objectKiller();
-            doThing.shatterDie(shootBullet);
-            Destroy(doThing);
+            this.gameObject.GetComponent<objectKiller>().shatterDie(shootBullet, true);
         }
-        Destroy(shootBullet);
+        if(shootBullet != null)
+        {
+            Destroy(shootBullet);
+        }
         if(kil)
         {
             Destroy(gunSource);
@@ -474,13 +428,14 @@ public class BulletSimple
     public float growthMultiplier;
     public float scaleX; //bullet scale (is a multiplier)
     public float scaleY;
-    public bool multiShoot;
+    public bool removeInvincible;
+    public bool removeHit;
     public bool incrementalGrowth;
     public bool beam;
+    public bool dieEarly;
     public multiShootSettings multiShootConfig;
     public colourChange colourConfig;
     public beamSettings beamConfig;
-    public bool dieEarly;
 }
 
 [System.Serializable]

@@ -51,15 +51,22 @@ public class moveBullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(bulletInfo.lockedToGun)
+        if(bulletInfo.lockedToGun && gunOrigin != null)
         {
-            if(gunOrigin.GetComponent<SpriteRenderer>().flipY)
+            if(gunOrigin.transform.Find("bulletSpawn") != null)
             {
-                spawnLocation = gunOrigin.transform.Find("bulletSpawnFlipped").gameObject;
+                if (gunOrigin.GetComponent<SpriteRenderer>().flipY)
+                {
+                    spawnLocation = gunOrigin.transform.Find("bulletSpawnFlipped").gameObject;
+                }
+                else
+                {
+                    spawnLocation = gunOrigin.transform.Find("bulletSpawn").gameObject;
+                }
             }
             else
             {
-                spawnLocation = gunOrigin.transform.Find("bulletSpawn").gameObject;
+                spawnLocation = gunOrigin.gameObject;
             }
             gameObject.transform.position = spawnLocation.transform.position;
             gameObject.transform.rotation = spawnLocation.transform.rotation;
