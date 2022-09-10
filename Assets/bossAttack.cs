@@ -17,16 +17,37 @@ public class bossAttack: MonoBehaviour
         public float duration;
         public GameObject bullet;
         public gunSpawnInfo spawnInfo; //info used for the "summon gun" attack
-
     }
-    public List<attackBasic> attackBasicList = new List<attackBasic>(); //the list of attacks the boss can have
-    public List<int> hpThreshold = new List<int>();
+    [System.Serializable]
+    public class phaseAttacks
+    {
+        public int hpThreshold;
+        public List<attackBasic> attackBasicList = new List<attackBasic>(); //the list of attacks the boss can have
+    }
+    public List<phaseAttacks> phaseAttacksList = new List<phaseAttacks>();
     public GameObject[] test; //Ignore, this is a test list to document the amount of bullets on the screen for stress testing
+    public IEnumerator currentPhase;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(pickAttack()); //makes the boss pick attacks when it loads in
+        currentPhase = pickAttack(phaseAttacksList[0].attackBasicList);
+        StartCoroutine(currentPhase); //makes the boss pick attacks when it loads in
+    }
+    public void updatePhase(int hp, List<phaseAttacks> listPhaseAttacks)
+    {
+        for(int i = 0; i < listPhaseAttacks.Count; i++)
+        {
+            if(listPhaseAttacks[i].hpThreshold == hp)
+            {
+                StopCoroutine(currentPhase);
+                IEnumerator newPhase = pickAttack(phaseAttacksList[i].attackBasicList);
+                StartCoroutine(newPhase);
+                currentPhase = newPhase;
+                break;
+            }
+        }
     }
 
     // Update is called once per frame
@@ -302,7 +323,7 @@ public class bossAttack: MonoBehaviour
             Destroy(gunSource);
         }
     }
-    IEnumerator pickAttack()
+    IEnumerator pickAttack(List<attackBasic> attackBasicList)
     {
         int oldIndex = 0;
         while(true)
