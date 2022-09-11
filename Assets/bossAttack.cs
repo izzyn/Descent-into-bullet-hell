@@ -37,7 +37,7 @@ public class bossAttack: MonoBehaviour
     }
     public void updatePhase(int hp, List<phaseAttacks> listPhaseAttacks)
     {
-        for(int i = 0; i < listPhaseAttacks.Count; i++)
+        for(int i = 1; i < listPhaseAttacks.Count; i++)
         {
             if(listPhaseAttacks[i].hpThreshold == hp)
             {
@@ -394,10 +394,6 @@ public class gunSpawnInfo
         public rotationSettings rotationConfig;
         public shatterShotConfig shatterConfig;
         int stage;
-        public enum weaponSpawned
-        {
-            basicGun
-        }
     }
     public float spawnDelay;
     public List<spawnedGun> gunInfo = new List<spawnedGun>();

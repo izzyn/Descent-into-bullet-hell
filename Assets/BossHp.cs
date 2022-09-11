@@ -20,7 +20,6 @@ public class BossHp : MonoBehaviour
     void Start()
     {
         StartCoroutine(ReduceHealth());
-
     }
 
     // Update is called once per frame
