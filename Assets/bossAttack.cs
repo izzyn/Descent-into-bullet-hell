@@ -69,7 +69,7 @@ public class bossAttack: MonoBehaviour
     {
         for(int i = 0; i < attackInfo.spawnInfo.gunInfo.Count; i++) //Spawns a gun for each gun in the attacks's list
         {
-            GameObject gunSpawned = Instantiate(attackInfo.spawnInfo.gunInfo[i].gun);i //Creates an object using the information provided
+            GameObject gunSpawned = Instantiate(attackInfo.spawnInfo.gunInfo[i].gun); //Creates an object using the information provided
             Vector2 savedScale = gunSpawned.transform.localScale; 
             attackInfo.spawnInfo.gunInfo[i].bulletConfig.lockedToGun = attackInfo.spawnInfo.gunInfo[i].rotationConfig.lockedToGun;
             gunSpawned.transform.localScale = new Vector2(savedScale.x * attackInfo.spawnInfo.gunInfo[i].gunScaleX, savedScale.y * attackInfo.spawnInfo.gunInfo[i].gunScaleY);

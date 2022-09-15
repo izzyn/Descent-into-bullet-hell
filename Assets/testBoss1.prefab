@@ -99,7 +99,109 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e66aae82631169045babf6099ae9dfd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  phaseAttacksList: []
+  phaseAttacksList:
+  - hpThreshold: 0
+    attackBasicList:
+    - Type: 0
+      duration: 0
+      bullet: {fileID: 0}
+      spawnInfo:
+        spawnDelay: 0
+        gunInfo:
+        - spawnLocation: {fileID: 0}
+          rotation: 0
+          gun: {fileID: 0}
+          gunTexture: {fileID: 0}
+          gunScaleX: 0
+          gunScaleY: 0
+          shootTowardsPlayer: 0
+          tracksPlayer: 0
+          trackingAccuracy: 0
+          rotatesOverTime: 0
+          bulletConfig:
+            delayBeforeShooting: 0
+            lockedToGun: 0
+            bullet: {fileID: 0}
+            bulletDelay: 0
+            bulletAmmount: 0
+            bulletDamage: 0
+            bulletSpeedMultiplier: 0
+            growthMultiplier: 0
+            scaleX: 0
+            scaleY: 0
+            removeInvincible: 0
+            removeHit: 0
+            incrementalGrowth: 0
+            beam: 0
+            dieEarly: 0
+            multiShootConfig:
+              bulletMultiplier: 0
+              angle: 0
+            colourConfig:
+              stage: 0
+              colourMode: 0
+              Colour: []
+            beamConfig:
+              lifespan: 0
+          rotationConfig:
+            timeToStart: 0
+            degrees: 0
+            speedMultiplier: 0
+            rotatesBack: 0
+            lockedToGun: 0
+          shatterConfig:
+            shootsWhileTraveling: 0
+            travelShot:
+              delayBeforeShooting: 0
+              lockedToGun: 0
+              bullet: {fileID: 0}
+              bulletDelay: 0
+              bulletAmmount: 0
+              bulletDamage: 0
+              bulletSpeedMultiplier: 0
+              growthMultiplier: 0
+              scaleX: 0
+              scaleY: 0
+              removeInvincible: 0
+              removeHit: 0
+              incrementalGrowth: 0
+              beam: 0
+              dieEarly: 0
+              multiShootConfig:
+                bulletMultiplier: 0
+                angle: 0
+              colourConfig:
+                stage: 0
+                colourMode: 0
+                Colour: []
+              beamConfig:
+                lifespan: 0
+            shootsWhenDestroyed: 0
+            destoyShoot:
+              delayBeforeShooting: 0
+              lockedToGun: 0
+              bullet: {fileID: 0}
+              bulletDelay: 0
+              bulletAmmount: 0
+              bulletDamage: 0
+              bulletSpeedMultiplier: 0
+              growthMultiplier: 0
+              scaleX: 0
+              scaleY: 0
+              removeInvincible: 0
+              removeHit: 0
+              incrementalGrowth: 0
+              beam: 0
+              dieEarly: 0
+              multiShootConfig:
+                bulletMultiplier: 0
+                angle: 0
+              colourConfig:
+                stage: 0
+                colourMode: 0
+                Colour: []
+              beamConfig:
+                lifespan: 0
   test: []
 --- !u!114 &3565553243765442947
 MonoBehaviour:
