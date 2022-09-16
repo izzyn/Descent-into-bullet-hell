@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class moveBullet : MonoBehaviour
 {
-    public float movementSpeedMultiplier;
+    public float movementSpeedMultiplier; //Different properties the bullet needs, explained in the boss attack script
     float growthRate;
     public bool stopGrowingpls;
     public GameObject gunOrigin;
@@ -25,18 +25,18 @@ public class moveBullet : MonoBehaviour
         growthRate = 0.1f * movementSpeedMultiplier;
         if(!bulletInfo.incrementalGrowth)
         {
-            if(!bulletInfo.beam)
+            if(!bulletInfo.beam) //sets the bullet size of the bullet to the scale it's supposed to be.
             {
                 gameObject.transform.localScale = new Vector2(gameObject.transform.localScale.x * bulletInfo.scaleX, gameObject.transform.localScale.y * bulletInfo.scaleY);
             }
-            else
+            else //If the bullet is a beam the X should not increase because it increases over time.
             {
                 gameObject.GetComponent<SpriteRenderer>().size = new Vector2(startSize.x, gameObject.transform.localScale.y * bulletInfo.scaleY);
             }
         }
         else
         {
-            if (!bulletInfo.beam)
+            if (!bulletInfo.beam) //Same as previous except it sets to the scale lower than it's finished form so that it can increase over time.
             {
                 gameObject.transform.localScale = new Vector2((gameObject.transform.localScale.x * bulletInfo.scaleX)/10, (gameObject.transform.localScale.y * bulletInfo.scaleY)/10);
             }
@@ -51,11 +51,11 @@ public class moveBullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(bulletInfo.lockedToGun && gunOrigin != null)
+        if(bulletInfo.lockedToGun && gunOrigin != null) //Null check and checks if the bullet it supposed to be locked to the gun.
         {
             if(gunOrigin.transform.Find("bulletSpawn") != null)
             {
-                if (gunOrigin.GetComponent<SpriteRenderer>().flipY)
+                if (gunOrigin.GetComponent<SpriteRenderer>().flipY) //Checks for where exactly it should be locked to
                 {
                     spawnLocation = gunOrigin.transform.Find("bulletSpawnFlipped").gameObject;
                 }
@@ -66,7 +66,7 @@ public class moveBullet : MonoBehaviour
             }
             else
             {
-                spawnLocation = gunOrigin.gameObject;
+                spawnLocation = gunOrigin.gameObject; //If the bullet doesn't contain the flipped positions, just set it to the gun instead.
             }
             gameObject.transform.position = spawnLocation.transform.position;
             gameObject.transform.rotation = spawnLocation.transform.rotation;

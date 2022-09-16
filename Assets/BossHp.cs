@@ -8,10 +8,10 @@ public class BossHp : MonoBehaviour
 
     IEnumerator ReduceHealth()
     {
-        while (health > 0)
+        while (health > 0) //0 check
         {
-            yield return new WaitForSeconds(1);
-            var bossAttack = this.gameObject.GetComponent<bossAttack>();
+            yield return new WaitForSeconds(1); //reduces HP every second
+            var bossAttack = this.gameObject.GetComponent<bossAttack>(); //checks for phase update.
             bossAttack.updatePhase(health, bossAttack.phaseAttacksList);
             health--;
         }
