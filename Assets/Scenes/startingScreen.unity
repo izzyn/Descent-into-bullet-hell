@@ -423,7 +423,7 @@ GameObject:
   - component: {fileID: 1351508215}
   m_Layer: 0
   m_Name: DataStorage
-  m_TagString: Untagged
+  m_TagString: BossDataStore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -548,6 +548,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1693473592}
     m_Modifications:
+    - target: {fileID: 5903567310328215785, guid: 3913b383e5e998d46b006fa2bd075736, type: 3}
+      propertyPath: sceneName
+      value: Level Selector
+      objectReference: {fileID: 0}
     - target: {fileID: 5903567310328215786, guid: 3913b383e5e998d46b006fa2bd075736, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -650,7 +654,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5903567310328215791, guid: 3913b383e5e998d46b006fa2bd075736, type: 3}
       propertyPath: m_Transition
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5903567310328215791, guid: 3913b383e5e998d46b006fa2bd075736, type: 3}
       propertyPath: m_Colors.m_SelectedColor.b

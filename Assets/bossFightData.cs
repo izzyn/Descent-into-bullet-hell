@@ -13,6 +13,10 @@ public class bossFightData : MonoBehaviour
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
+        if(GameObject.FindGameObjectsWithTag("BossDataStore").Length > 1)
+        {
+            Destroy(gameObject);
+        }
     }
 
     // Update is called once per frame
