@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class bossFightData : MonoBehaviour
 {
+    public LevelData.buttonType selectionScene;
     public List<bossdata> bossData;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,20 +27,15 @@ public class bossFightData : MonoBehaviour
     {
         
     }
+
 }
 
 [System.Serializable]
 public class bossdata
 {
-    public GameObject boss;
-    public GameObject button;
-
-    [System.Serializable]
-    public enum selection
-    {
-        Heaven,
-        Hell,
-        Extra
-    }
-    public selection buttonPlace;
+    public string sceneName;
+    public Sprite defaultSprite;
+    public Sprite hoverSprite;
+    public Sprite selectSprite;
+    public LevelData.buttonType buttonPlace;
 }

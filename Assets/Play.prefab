@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5903567310328215789}
   - component: {fileID: 5903567310328215790}
   - component: {fileID: 5903567310328215791}
-  - component: {fileID: 5903567310328215785}
+  - component: {fileID: -6338826071144537417}
   m_Layer: 5
   m_Name: Play
   m_TagString: Untagged
@@ -30,14 +30,15 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1, y: -7.2786}
-  m_SizeDelta: {x: 191.0159, y: 43.6681}
+  m_AnchoredPosition: {x: -0.000022888, y: 0.000011444}
+  m_SizeDelta: {x: 289.7699, y: 111.038}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5903567310328215789
 CanvasRenderer:
@@ -60,7 +61,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.1187284, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -133,7 +134,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &5903567310328215785
+--- !u!114 &-6338826071144537417
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -142,8 +143,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 5903567310328215787}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a03df98cb04a1604da98cbe432094670, type: 3}
+  m_Script: {fileID: 11500000, guid: 7aa77d4f310e8254ea8bf9121d67cc84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: SampleScene
-  unloadScene: startingScene
+  typeOfButton: 0
+  bossSelectonScene: BossSelection

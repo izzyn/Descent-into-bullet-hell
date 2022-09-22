@@ -313,7 +313,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5903567310328215787, guid: 3913b383e5e998d46b006fa2bd075736, type: 3}
       propertyPath: m_Name
-      value: HellButton (3)
+      value: HeavenButton
       objectReference: {fileID: 0}
     - target: {fileID: 5903567310328215790, guid: 3913b383e5e998d46b006fa2bd075736, type: 3}
       propertyPath: m_Type
@@ -440,13 +440,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2055140183}
     m_Modifications:
-    - target: {fileID: 5903567310328215785, guid: 3913b383e5e998d46b006fa2bd075736, type: 3}
-      propertyPath: sceneName
-      value: startingScreen
-      objectReference: {fileID: 0}
-    - target: {fileID: 5903567310328215785, guid: 3913b383e5e998d46b006fa2bd075736, type: 3}
-      propertyPath: unloadScene
-      value: Level Selector
+    - target: {fileID: -6338826071144537417, guid: 3913b383e5e998d46b006fa2bd075736, type: 3}
+      propertyPath: typeOfButton
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5903567310328215786, guid: 3913b383e5e998d46b006fa2bd075736, type: 3}
       propertyPath: m_Pivot.x
@@ -550,7 +546,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5903567310328215787, guid: 3913b383e5e998d46b006fa2bd075736, type: 3}
       propertyPath: m_Name
-      value: HellButton (2)
+      value: ExtraButton
       objectReference: {fileID: 0}
     - target: {fileID: 5903567310328215790, guid: 3913b383e5e998d46b006fa2bd075736, type: 3}
       propertyPath: m_Type
@@ -737,6 +733,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2055140183}
     m_Modifications:
+    - target: {fileID: -6338826071144537417, guid: 3913b383e5e998d46b006fa2bd075736, type: 3}
+      propertyPath: typeOfButton
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5903567310328215786, guid: 3913b383e5e998d46b006fa2bd075736, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
