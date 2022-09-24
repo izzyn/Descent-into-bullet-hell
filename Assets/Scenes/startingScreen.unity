@@ -442,8 +442,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectionScene: 0
   bossData:
-  - sceneName: SampleScene
-    defaultSprite: {fileID: 21300000, guid: de3dd98a639d13442892c6214b0b7fbf, type: 3}
+  - bossName: 
+    bossDesc: adadadad
+    sceneName: SampleScene
+    defaultSprite: {fileID: 0}
     hoverSprite: {fileID: 0}
     selectSprite: {fileID: 0}
     buttonPlace: 0

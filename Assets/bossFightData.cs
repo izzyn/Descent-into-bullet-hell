@@ -33,6 +33,8 @@ public class bossFightData : MonoBehaviour
 [System.Serializable]
 public class bossdata
 {
+    public string bossName;
+    public string bossDesc;
     public string sceneName;
     public Sprite defaultSprite;
     public Sprite hoverSprite;

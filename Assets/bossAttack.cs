@@ -251,6 +251,13 @@ public class bossAttack: MonoBehaviour
                             splitShot(shatterConfig.travelShot, shootBullet); //Makes it shoot split bullets if you select it
                         }
                     }
+                    if(shootBullet.GetComponent<moveBullet>().bulletInfo.richRocket)
+                    {
+                        if(!shootBullet.GetComponent<moveBullet>().bulletInfo.rickRocketSettings.rickRocketsOnWallHit)
+                        {
+                            StartCoroutine(startRichRocket(shootBullet.GetComponent<moveBullet>().bulletInfo.rickRocketSettings.timeToRickRocket, shootBullet));
+                        }
+                    }
                 }
 
                 yield return new WaitForSeconds(attackInfo.bulletDelay); //Waits the delay between bullets
@@ -272,13 +279,20 @@ public class bossAttack: MonoBehaviour
             }
         }
     }
+    public IEnumerator startRichRocket(float delay, GameObject shootBullet)
+    {
+        yield return new WaitForSeconds(delay);
+        Debug.Log("Imma do rickrocket");    
+        shootBullet.transform.Rotate(0, 0, 180);
+        
+    }
     public void splitShot(BulletSimple information, GameObject source)
     {
         StartCoroutine(spawnBullets(information, source)); //spawns bullets but with less information as to not create an infinite loop
     }
     public GameObject createBullet(GameObject shootBullet, BulletSimple attackInfo, GameObject gunSource, shatterShotConfig shatterConfig = null)
     {
-        shootBullet.GetComponent<moveBullet>().bulletInfo = attackInfo; //Gives the bullet scripts all information they require to function
+        shootBullet.GetComponent<moveBullet>().bulletInfo = attackInfo.shallowCopy(); //Gives the bullet scripts all information they require to function
         shootBullet.GetComponent<damagePlayer>().damage = attackInfo.bulletDamage;
         shootBullet.GetComponent<damagePlayer>().removeWhenHit = attackInfo.removeHit;
         shootBullet.GetComponent<damagePlayer>().removeWhenInvincible = attackInfo.removeInvincible;
@@ -434,6 +448,10 @@ public class rotationSettings
 [System.Serializable]
 public class BulletSimple
 {
+    public BulletSimple shallowCopy()
+    {
+        return (BulletSimple)this.MemberwiseClone();
+    }
     public float delayBeforeShooting;
     //[HideInInspector]
     public bool lockedToGun;
@@ -450,9 +468,12 @@ public class BulletSimple
     public bool incrementalGrowth; //grows over time
     public bool beam; //For all the differances between normal bullets and beams
     public bool dieEarly;
+    public bool richRocket;
+    public bool diesOnWallHit;
     public multiShootSettings multiShootConfig; //for all settings needed to shoot multiple bullets
     public colourChange colourConfig;
     public beamSettings beamConfig;
+    public rickrocket rickRocketSettings;
 }
 
 [System.Serializable]
@@ -463,4 +484,11 @@ public class shatterShotConfig
     public bool shootsWhenDestroyed;
     public BulletSimple destoyShoot;
 
+}
+[System.Serializable]
+public class rickrocket
+{
+    public float timeToRickRocket;
+    public bool rickRocketsOnWallHit;
+    public int timesItBounces;
 }

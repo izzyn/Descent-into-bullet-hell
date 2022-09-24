@@ -73,22 +73,35 @@ public class objectKiller : MonoBehaviour
     }
     public void kill(GameObject collision)
     {
-        if (collision.GetComponent<moveBullet>().bulletInfo.beam)
+        if(collision.GetComponent<moveBullet>().bulletInfo.diesOnWallHit)
         {
-            //collision.GetComponent<moveBullet>().stopGrowingpls = true;
-        }
-        else
-        {
-            if(collision.GetComponent<moveBullet>() != null)
+            if (collision.GetComponent<moveBullet>().bulletInfo.beam)
             {
-                if(collision.GetComponent<moveBullet>().shootsWhenDie && collision.GetComponent<moveBullet>().dieProperties != null)
-                {
-                    shatterDie(collision);
-                }
+                //collision.GetComponent<moveBullet>().stopGrowingpls = true;
             }
-            Destroy(collision.gameObject);
-        }
+            else
+            {
+                if (collision.GetComponent<moveBullet>() != null)
+                {
+                    if (collision.GetComponent<moveBullet>().shootsWhenDie && collision.GetComponent<moveBullet>().dieProperties != null)
+                    {
+                        shatterDie(collision);
+                    }
+                }
+                Destroy(collision.gameObject);
+            }
 
+        }
+        else if(collision.GetComponent<moveBullet>().bulletInfo.rickRocketSettings.rickRocketsOnWallHit)
+        {
+            collision.transform.Rotate(0, 0, 180);
+            collision.GetComponent<moveBullet>().bulletInfo.rickRocketSettings.timesItBounces--;
+            if(collision.GetComponent<moveBullet>().bulletInfo.rickRocketSettings.timesItBounces == 0)
+            {
+                collision.GetComponent<moveBullet>().bulletInfo.diesOnWallHit = true;
+            }
+
+        }
     }
     public void shatterDie(GameObject collision, bool diedEarly = false)
     {
@@ -97,7 +110,7 @@ public class objectKiller : MonoBehaviour
         ghostObject.transform.position = collision.transform.position;
         ghostObject.transform.rotation = collision.transform.rotation;
         instansiatedBossAttack = collision.GetComponent<moveBullet>().sourceScript;
-        if(!diedEarly)
+        if (!diedEarly)
         {
             ghostObject.transform.Rotate(0, 0, 180);
         }
