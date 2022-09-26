@@ -812,6 +812,7 @@ GameObject:
   - component: {fileID: 413916754}
   - component: {fileID: 413916756}
   - component: {fileID: 413916755}
+  - component: {fileID: 413916757}
   m_Layer: 5
   m_Name: helthRed
   m_TagString: Untagged
@@ -836,9 +837,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 607, y: 182.35974}
-  m_SizeDelta: {x: 61.109, y: 364.7194}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 365.38, y: -96.44721}
+  m_SizeDelta: {x: 24.6615, y: 282.8944}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &413916755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -877,6 +878,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 413916753}
   m_CullTransparentMesh: 1
+--- !u!114 &413916757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 413916753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3d0557fea5644a4699f534cb2d96567, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &512922221 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1066600630059214012, guid: c3917a4d3e7647b41aca427d7e92170e, type: 3}
@@ -1868,8 +1881,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 607, y: 182.99474}
-  m_SizeDelta: {x: 133.1758, y: 635.6155}
+  m_AnchoredPosition: {x: 365.38, y: 45}
+  m_SizeDelta: {x: 69.236, y: 416.4673}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1182506526
 MonoBehaviour:
@@ -2381,7 +2394,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -2853,7 +2866,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 239193692035336244, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: health
-      value: 20
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: bullet
@@ -2869,7 +2882,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: phaseAttacksList.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].Type
@@ -2921,6 +2934,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: phaseAttacksList.Array.data[1].hpThreshold
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[2].hpThreshold
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
@@ -2941,6 +2958,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: phaseAttacksList.Array.data[1].attackBasicList.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[2].attackBasicList.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
@@ -3033,6 +3054,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: phaseAttacksList.Array.data[1].attackBasicList.Array.data[0].Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[1].attackBasicList.Array.data[1].Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[2].attackBasicList.Array.data[0].Type
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
@@ -3141,6 +3170,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: phaseAttacksList.Array.data[1].attackBasicList.Array.data[0].duration
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[1].attackBasicList.Array.data[1].duration
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[2].attackBasicList.Array.data[0].duration
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
@@ -3904,6 +3941,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[1].attackBasicList.Array.data[1].spawnInfo.gunInfo.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[2].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].bulletConfig.growthMultiplier
       value: 1
       objectReference: {fileID: 0}
@@ -4097,6 +4142,14 @@ PrefabInstance:
       objectReference: {fileID: 8146236694733322058, guid: 6098387de2ba9ac4189ffb1f1315715b, type: 3}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: phaseAttacksList.Array.data[1].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].gun
+      value: 
+      objectReference: {fileID: 8146236694733322058, guid: cb0a917589e481244b7ee5032be3f34f, type: 3}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[1].attackBasicList.Array.data[1].spawnInfo.gunInfo.Array.data[0].gun
+      value: 
+      objectReference: {fileID: 8146236694733322058, guid: cb0a917589e481244b7ee5032be3f34f, type: 3}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[2].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].gun
       value: 
       objectReference: {fileID: 8146236694733322058, guid: cb0a917589e481244b7ee5032be3f34f, type: 3}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
@@ -4324,6 +4377,14 @@ PrefabInstance:
       value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[1].attackBasicList.Array.data[1].spawnInfo.gunInfo.Array.data[0].rotation
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[2].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].rotation
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: phaseAttacksList.Array.data[0].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].gunScaleX
       value: 0.8
       objectReference: {fileID: 0}
@@ -4340,11 +4401,35 @@ PrefabInstance:
       value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[1].attackBasicList.Array.data[1].spawnInfo.gunInfo.Array.data[0].gunScaleX
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[1].attackBasicList.Array.data[1].spawnInfo.gunInfo.Array.data[0].gunScaleY
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[2].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].gunScaleX
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[2].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].gunScaleY
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: phaseAttacksList.Array.data[0].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].gunTexture
       value: 
       objectReference: {fileID: -5831714525949929224, guid: 26b4b31158124d741b27d35ac18239bd, type: 3}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: phaseAttacksList.Array.data[1].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].gunTexture
+      value: 
+      objectReference: {fileID: -7174612620203739136, guid: 26b4b31158124d741b27d35ac18239bd, type: 3}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[1].attackBasicList.Array.data[1].spawnInfo.gunInfo.Array.data[0].gunTexture
+      value: 
+      objectReference: {fileID: -7174612620203739136, guid: 26b4b31158124d741b27d35ac18239bd, type: 3}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[2].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].gunTexture
       value: 
       objectReference: {fileID: -7174612620203739136, guid: 26b4b31158124d741b27d35ac18239bd, type: 3}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
@@ -4392,6 +4477,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2036536110}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[1].attackBasicList.Array.data[1].spawnInfo.gunInfo.Array.data[0].spawnLocation
+      value: 
+      objectReference: {fileID: 2036536110}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[2].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].spawnLocation
+      value: 
+      objectReference: {fileID: 2036536110}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].shatterConfig.destoyShoot.beamConfig.lifespan
       value: 0
       objectReference: {fileID: 0}
@@ -4425,6 +4518,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: phaseAttacksList.Array.data[1].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].rotatesOverTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[1].attackBasicList.Array.data[1].spawnInfo.gunInfo.Array.data[0].rotatesOverTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[2].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].rotatesOverTime
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
@@ -4612,6 +4713,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[1].attackBasicList.Array.data[1].spawnInfo.gunInfo.Array.data[0].bulletConfig.beam
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[2].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].bulletConfig.beam
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].shatterConfig.destoyShoot.colourConfig.colourMode
       value: 2
       objectReference: {fileID: 0}
@@ -4621,6 +4730,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: phaseAttacksList.Array.data[1].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].shootTowardsPlayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[1].attackBasicList.Array.data[1].spawnInfo.gunInfo.Array.data[0].shootTowardsPlayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[2].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].shootTowardsPlayer
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
@@ -4648,11 +4765,43 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[1].attackBasicList.Array.data[1].spawnInfo.gunInfo.Array.data[0].bulletConfig.bullet
+      value: 
+      objectReference: {fileID: 1125531046277643471, guid: 8ed8bad705c85274d987ff0afbb79d39, type: 3}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[1].attackBasicList.Array.data[1].spawnInfo.gunInfo.Array.data[0].bulletConfig.scaleX
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[1].attackBasicList.Array.data[1].spawnInfo.gunInfo.Array.data[0].bulletConfig.scaleY
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[2].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].bulletConfig.bullet
+      value: 
+      objectReference: {fileID: 1125531046277643471, guid: 8ed8bad705c85274d987ff0afbb79d39, type: 3}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[2].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].bulletConfig.scaleX
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[2].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].bulletConfig.scaleY
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: phaseAttacksList.Array.data[0].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].bulletConfig.dieEarly
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: phaseAttacksList.Array.data[1].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].rotationConfig.degrees
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[1].attackBasicList.Array.data[1].spawnInfo.gunInfo.Array.data[0].rotationConfig.degrees
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[2].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].rotationConfig.degrees
       value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
@@ -4680,6 +4829,22 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[1].attackBasicList.Array.data[1].spawnInfo.gunInfo.Array.data[0].bulletConfig.bulletDelay
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[1].attackBasicList.Array.data[1].spawnInfo.gunInfo.Array.data[0].bulletConfig.lockedToGun
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[2].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].bulletConfig.bulletDelay
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[2].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].bulletConfig.lockedToGun
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].shatterConfig.destoyShoot.colourConfig.Colour.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -4696,6 +4861,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[1].attackBasicList.Array.data[1].spawnInfo.gunInfo.Array.data[0].bulletConfig.bulletDamage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[2].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].bulletConfig.bulletDamage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: phaseAttacksList.Array.data[0].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].bulletConfig.bulletAmmount
       value: 1
       objectReference: {fileID: 0}
@@ -4709,6 +4882,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: phaseAttacksList.Array.data[1].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].rotationConfig.lockedToGun
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[1].attackBasicList.Array.data[1].spawnInfo.gunInfo.Array.data[0].bulletConfig.bulletAmmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[1].attackBasicList.Array.data[1].spawnInfo.gunInfo.Array.data[0].rotationConfig.lockedToGun
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[2].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].bulletConfig.bulletAmmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[2].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].rotationConfig.lockedToGun
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
@@ -4749,6 +4938,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: phaseAttacksList.Array.data[1].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].bulletConfig.growthMultiplier
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[1].attackBasicList.Array.data[1].spawnInfo.gunInfo.Array.data[0].bulletConfig.growthMultiplier
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[2].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].bulletConfig.growthMultiplier
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
@@ -4800,6 +4997,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[1].attackBasicList.Array.data[1].spawnInfo.gunInfo.Array.data[0].rotationConfig.speedMultiplier
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[2].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].rotationConfig.speedMultiplier
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: phaseAttacksList.Array.data[0].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].bulletConfig.beamConfig.lifespan
       value: 1
       objectReference: {fileID: 0}
@@ -4824,6 +5029,22 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[1].attackBasicList.Array.data[1].spawnInfo.gunInfo.Array.data[0].bulletConfig.beamConfig.lifespan
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[1].attackBasicList.Array.data[1].spawnInfo.gunInfo.Array.data[0].bulletConfig.delayBeforeShooting
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[2].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].bulletConfig.beamConfig.lifespan
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[2].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].bulletConfig.delayBeforeShooting
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: phaseAttacksList.Array.data[0].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].shatterConfig.shootsWhenDestroyed
       value: 1
       objectReference: {fileID: 0}
@@ -4840,7 +5061,23 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[1].attackBasicList.Array.data[1].spawnInfo.gunInfo.Array.data[0].bulletConfig.bulletSpeedMultiplier
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[2].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].bulletConfig.bulletSpeedMultiplier
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: phaseAttacksList.Array.data[1].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].bulletConfig.multiShootConfig.angle
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[1].attackBasicList.Array.data[1].spawnInfo.gunInfo.Array.data[0].bulletConfig.multiShootConfig.angle
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[2].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].bulletConfig.multiShootConfig.angle
       value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
@@ -4864,6 +5101,14 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[1].attackBasicList.Array.data[1].spawnInfo.gunInfo.Array.data[0].bulletConfig.colourConfig.Colour.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[2].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].bulletConfig.colourConfig.Colour.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: phaseAttacksList.Array.data[0].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].shatterConfig.destoyShoot.beamConfig.lifespan
       value: 2
       objectReference: {fileID: 0}
@@ -4877,6 +5122,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: phaseAttacksList.Array.data[1].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].bulletConfig.multiShootConfig.bulletMultiplier
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[1].attackBasicList.Array.data[1].spawnInfo.gunInfo.Array.data[0].bulletConfig.multiShootConfig.bulletMultiplier
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[2].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].bulletConfig.multiShootConfig.bulletMultiplier
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
@@ -4926,6 +5179,46 @@ PrefabInstance:
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: phaseAttacksList.Array.data[1].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].bulletConfig.colourConfig.Colour.Array.data[1].r
       value: 0.043376923
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[1].attackBasicList.Array.data[1].spawnInfo.gunInfo.Array.data[0].bulletConfig.colourConfig.Colour.Array.data[0].b
+      value: 0.033018887
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[1].attackBasicList.Array.data[1].spawnInfo.gunInfo.Array.data[0].bulletConfig.colourConfig.Colour.Array.data[0].g
+      value: 0.033018887
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[1].attackBasicList.Array.data[1].spawnInfo.gunInfo.Array.data[0].bulletConfig.colourConfig.Colour.Array.data[0].r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[1].attackBasicList.Array.data[1].spawnInfo.gunInfo.Array.data[0].bulletConfig.colourConfig.Colour.Array.data[1].b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[1].attackBasicList.Array.data[1].spawnInfo.gunInfo.Array.data[0].bulletConfig.colourConfig.Colour.Array.data[1].r
+      value: 0.043376923
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[2].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].bulletConfig.colourConfig.Colour.Array.data[0].b
+      value: 0.10415729
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[2].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].bulletConfig.colourConfig.Colour.Array.data[0].g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[2].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].bulletConfig.colourConfig.Colour.Array.data[0].r
+      value: 0.031372547
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[2].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].bulletConfig.colourConfig.Colour.Array.data[1].b
+      value: 0.33107138
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[2].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].bulletConfig.colourConfig.Colour.Array.data[1].r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: phaseAttacksList.Array.data[0].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].bulletConfig.rickRocketSettings.rickRocketsOnWallHit
@@ -5022,6 +5315,10 @@ PrefabInstance:
     - target: {fileID: 2494599609475915386, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: m_Name
       value: testBoss1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915386, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: m_TagString
+      value: mainBoss
       objectReference: {fileID: 0}
     - target: {fileID: 3565553243765442947, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: movementSpeed

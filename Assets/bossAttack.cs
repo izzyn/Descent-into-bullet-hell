@@ -21,7 +21,7 @@ public class bossAttack: MonoBehaviour
     [System.Serializable]
     public class phaseAttacks
     {
-        public int hpThreshold;
+        public float hpThreshold;
         public List<attackBasic> attackBasicList = new List<attackBasic>(); //the list of attacks the boss can have
     }
     public List<phaseAttacks> phaseAttacksList = new List<phaseAttacks>();
@@ -35,16 +35,31 @@ public class bossAttack: MonoBehaviour
         currentPhase = pickAttack(phaseAttacksList[0].attackBasicList);
         StartCoroutine(currentPhase); //makes the boss pick attacks when it loads in
     }
-    public void updatePhase(int hp, List<phaseAttacks> listPhaseAttacks) //Updates phase every time the boss loses HP
+    public void updatePhase(float hp, List<phaseAttacks> listPhaseAttacks) //Updates phase every time the boss loses HP
     {
-        for(int i = 1; i < listPhaseAttacks.Count; i++) 
+        for (int i = 1; i < listPhaseAttacks.Count; i++) 
         {
-            if(listPhaseAttacks[i].hpThreshold == hp)
+            if(listPhaseAttacks[i].hpThreshold >= hp)
             {
                 StopCoroutine(currentPhase);
+                GameObject[] currentBullets = GameObject.FindGameObjectsWithTag("bullet");
+                for (int j = 0; j < currentBullets.Length; j++)
+                {
+                    Destroy(currentBullets[j]);
+                }
                 IEnumerator newPhase = pickAttack(phaseAttacksList[i].attackBasicList); //Sets the new attack list to the one that corresponds to that phase
+                phaseAttacksList.RemoveAt(i);
                 StartCoroutine(newPhase);
                 currentPhase = newPhase;
+                if (hp <= 0)
+                {
+                    StopCoroutine(currentPhase);
+                    currentBullets = GameObject.FindGameObjectsWithTag("bullet");
+                    for (int j = 0; j < currentBullets.Length; j++)
+                    {
+                        Destroy(currentBullets[j]);
+                    }
+                }
                 break;
             }
         }
