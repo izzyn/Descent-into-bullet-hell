@@ -292,7 +292,7 @@ public class bossAttack: MonoBehaviour
     }
     public GameObject createBullet(GameObject shootBullet, BulletSimple attackInfo, GameObject gunSource, shatterShotConfig shatterConfig = null)
     {
-        shootBullet.GetComponent<moveBullet>().bulletInfo = attackInfo.shallowCopy(); //Gives the bullet scripts all information they require to function
+        shootBullet.GetComponent<moveBullet>().bulletInfo = attackInfo.Copy(); //Gives the bullet scripts all information they require to function
         shootBullet.GetComponent<damagePlayer>().damage = attackInfo.bulletDamage;
         shootBullet.GetComponent<damagePlayer>().removeWhenHit = attackInfo.removeHit;
         shootBullet.GetComponent<damagePlayer>().removeWhenInvincible = attackInfo.removeInvincible;
@@ -448,9 +448,12 @@ public class rotationSettings
 [System.Serializable]
 public class BulletSimple
 {
-    public BulletSimple shallowCopy()
+    public BulletSimple Copy() //deep copies properties that need to be deep copies while shallow copying the rest
     {
-        return (BulletSimple)this.MemberwiseClone();
+        BulletSimple copiedClass = (BulletSimple)this.MemberwiseClone();
+        copiedClass.diesOnWallHit = this.diesOnWallHit;
+        copiedClass.rickRocketSettings = new rickrocket(rickRocketSettings.timeToRickRocket, rickRocketSettings.rickRocketsOnWallHit, rickRocketSettings.timesItBounces);
+        return copiedClass;
     }
     public float delayBeforeShooting;
     //[HideInInspector]
@@ -491,4 +494,10 @@ public class rickrocket
     public float timeToRickRocket;
     public bool rickRocketsOnWallHit;
     public int timesItBounces;
+    public rickrocket(float timeToRickRocket, bool rickRocketsOnWallHit, int timesItBounces)
+    {
+        this.timeToRickRocket = timeToRickRocket;
+        this.rickRocketsOnWallHit = rickRocketsOnWallHit;
+        this.timesItBounces = timesItBounces;
+    }
 }
