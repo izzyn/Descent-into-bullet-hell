@@ -45,7 +45,7 @@ public class bossAttack: MonoBehaviour
                 GameObject[] currentBullets = GameObject.FindGameObjectsWithTag("bullet");
                 for (int j = 0; j < currentBullets.Length; j++)
                 {
-                    Destroy(currentBullets[j]);
+                    Destroy(currentBullets[j]); //removes all the bullets from the last phase
                 }
                 IEnumerator newPhase = pickAttack(phaseAttacksList[i].attackBasicList); //Sets the new attack list to the one that corresponds to that phase
                 phaseAttacksList.RemoveAt(i);
