@@ -8,6 +8,7 @@ TagManager:
   - wall
   - BossDataStore
   - mainBoss
+  - difficultyButton
   layers:
   - Default
   - TransparentFX
