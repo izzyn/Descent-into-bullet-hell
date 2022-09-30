@@ -11,7 +11,8 @@ public class LevelData : MonoBehaviour
     {
         Heaven,
         Hell,
-        Extra
+        Extra,
+        none
     }
     public buttonType typeOfButton;
     public string bossSelectonScene;
@@ -31,7 +32,10 @@ public class LevelData : MonoBehaviour
         Debug.Log("Hewwo");
         if(GameObject.Find("ButtonManager") == null)
         {
-            GameObject.Find("DataStorage").GetComponent<bossFightData>().selectionScene = typeOfButton;
+            if(typeOfButton != buttonType.none)
+            {
+                GameObject.Find("DataStorage").GetComponent<bossFightData>().selectionScene = typeOfButton;
+            }
         }
         SceneManager.LoadScene(bossSelectonScene);
 

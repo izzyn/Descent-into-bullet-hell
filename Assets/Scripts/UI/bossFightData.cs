@@ -7,6 +7,9 @@ public class bossFightData : MonoBehaviour
 {
     public LevelData.buttonType selectionScene;
     public List<bossdata> bossData;
+    public int difficultyIndex;
+    public int lives;
+    public int HP;
 
     // Start is called before the first frame update
     void Start()

@@ -142,7 +142,7 @@ public class bossAttack: MonoBehaviour
         {
             degreesPerRotation *= -1;
         }
-        while(gun != null) //Null check
+       while(gun != null) //Null check
         {
             for(int i = 0; i < rotationSteps; i++)
             {

@@ -14,12 +14,20 @@ public class hpAndLives : MonoBehaviour
     float startingHP;
     int startingLives;
     int invincibilityStack;
+    public delegate void PlayerLoaded();
+    public static event PlayerLoaded playerLoaded;
 
     // Start is called before the first frame update
     void Start()
     {
-        startingLives = Lives;
-        startingHP = HP;
+        if (GameObject.Find("DataStorage") != null)
+        {
+            startingLives = GameObject.Find("DataStorage").GetComponent<bossFightData>().lives;
+            startingHP = GameObject.Find("DataStorage").GetComponent<bossFightData>().HP;
+        }
+        HP = startingHP;
+        Lives = startingLives;
+        playerLoaded();
     }
 
     // Update is called once per frame

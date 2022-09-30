@@ -5,7 +5,9 @@ using UnityEngine.UI;
 
 public class ButtonManagerScript : MonoBehaviour
 {
+    public delegate void CompleteButtons();
     public GameObject defaultButton;
+    public static event CompleteButtons completeButtons;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,10 +26,12 @@ public class ButtonManagerScript : MonoBehaviour
                     newButton.GetComponent<Image>().type = Image.Type.Simple;
                     newButton.GetComponent<Image>().sprite = shortHandList[i].defaultSprite;
                 }
+                newButton.GetComponent<bossStart>().bossScene = shortHandList[i].sceneName;
                 //newButton.GetComponent<LevelData>().bossSelectonScene = shortHandList[i].sceneName;
                 newButton.transform.SetParent(GameObject.Find("buttonPanel").transform);
             }
         }
+        completeButtons();
     }
 
     // Update is called once per frame

@@ -16,6 +16,10 @@ public class displayHPandLives : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        hpAndLives.playerLoaded += setHPLives;
+    }
+    public void setHPLives()
+    {
         double HPRows = System.Math.Ceiling(GameObject.FindGameObjectWithTag("Player").GetComponent<hpAndLives>().HP / 5);
         double newLives = GameObject.FindGameObjectWithTag("Player").GetComponent<hpAndLives>().Lives;
         double LivesRows = System.Math.Ceiling(newLives / 3);
@@ -23,7 +27,7 @@ public class displayHPandLives : MonoBehaviour
         LivesLeft = GameObject.FindGameObjectWithTag("Player").GetComponent<hpAndLives>().Lives;
         float height = cloneObject.GetComponent<SpriteRenderer>().bounds.size.y;
         int res = Convert.ToInt32(HPRows);
-        for(int i = 0; i < HPList.Count; i++)
+        for (int i = 0; i < HPList.Count; i++)
         {
             GameObject.Destroy(HPList[i]);
         }
@@ -31,7 +35,7 @@ public class displayHPandLives : MonoBehaviour
         {
             GameObject.Destroy(LivesList[i]);
         }
-            
+
         for (int i = 0; i < HPRows; i++)
         {
             for (int j = 0; j < 5 && HPList.Count < HPLeft; j++)
@@ -40,10 +44,10 @@ public class displayHPandLives : MonoBehaviour
                 HPList.Add(newDisplay);
                 newDisplay.GetComponent<SpriteRenderer>().sprite = hpFull;
                 float width = newDisplay.GetComponent<SpriteRenderer>().bounds.size.x;
-                newDisplay.transform.position = new Vector3(-9.35f + ((0.05f+width) * (j)), 5.374f - ((0.05f+height) * (i)), -5);
+                newDisplay.transform.position = new Vector3(-9.35f + ((0.05f + width) * (j)), 5.374f - ((0.05f + height) * (i)), -5);
             }
         }
-        if(LivesLeft > 0)
+        if (LivesLeft > 0)
         {
             for (int i = 0; i < LivesRows; i++)
             {
@@ -56,7 +60,8 @@ public class displayHPandLives : MonoBehaviour
                     newDisplay.transform.position = new Vector3(-9.25f + ((0.05f + width) * j), 5.374f - ((0.05f + height) * (i + res)), -5);
                 }
             }
-        } 
+        }
+        hpAndLives.playerLoaded -= setHPLives;
     }
     public void updateThing()
     {

@@ -20,10 +20,20 @@ public class bossStart : MonoBehaviour
     }
     private void selectDifficulty()
     {
-        objectReferance.SetActive(true);
-        foreach(var item in GameObject.FindGameObjectsWithTag("difficultyButton"))
+        if(objectReferance.activeInHierarchy == false)
         {
-
+            objectReferance.SetActive(true);
+            foreach (var item in GameObject.FindGameObjectsWithTag("difficultyButton"))
+            {
+                if (item.GetComponent<LevelData>() != null)
+                {
+                    item.GetComponent<LevelData>().bossSelectonScene = bossScene;
+                }
+            }
+        }
+        else
+        {
+            objectReferance.SetActive(false);
         }
     }
 }
