@@ -24,9 +24,14 @@ public class hpAndLives : MonoBehaviour
         {
             startingLives = GameObject.Find("DataStorage").GetComponent<bossFightData>().lives;
             startingHP = GameObject.Find("DataStorage").GetComponent<bossFightData>().HP;
+            HP = startingHP;
+            Lives = startingLives;
         }
-        HP = startingHP;
-        Lives = startingLives;
+        else
+        {
+            startingHP = HP;
+            startingLives = Lives;
+        }
         playerLoaded();
     }
 
