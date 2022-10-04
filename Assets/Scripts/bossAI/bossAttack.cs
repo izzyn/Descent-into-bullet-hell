@@ -290,6 +290,7 @@ public class bossAttack: MonoBehaviour
         {
             if (!attackInfo.beam && gunSource.GetComponent<moveBullet>() == null)
             {
+                yield return new WaitForSeconds(0.5f);
                 Destroy(gunSource); //destroys the bullets after all bullets have been shot (provided the bullets are not beams and the source isn't a bullet)
             }
         }

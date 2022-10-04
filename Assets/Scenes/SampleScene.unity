@@ -4799,6 +4799,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[0].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].bulletConfig.beam
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: phaseAttacksList.Array.data[1].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].bulletConfig.beam
       value: 1
       objectReference: {fileID: 0}
@@ -5083,6 +5087,10 @@ PrefabInstance:
       value: 0.32859135
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[0].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].shatterConfig.destoyShoot.beam
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: phaseAttacksList.Array.data[1].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].rotationConfig.speedMultiplier
       value: 1
       objectReference: {fileID: 0}
@@ -5101,7 +5109,7 @@ PrefabInstance:
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: phaseAttacksList.Array.data[0].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].shatterConfig.destoyShoot.bullet
       value: 
-      objectReference: {fileID: 8438050386559320783, guid: bc92b5e85684a03409a39249bf0ba14b, type: 3}
+      objectReference: {fileID: 1125531046277643471, guid: 8ed8bad705c85274d987ff0afbb79d39, type: 3}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: phaseAttacksList.Array.data[0].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].shatterConfig.destoyShoot.scaleX
       value: 0.7
@@ -5180,7 +5188,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: phaseAttacksList.Array.data[0].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].shatterConfig.destoyShoot.bulletAmmount
-      value: 10
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
+      propertyPath: phaseAttacksList.Array.data[0].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].shatterConfig.destoyShoot.growthMultiplier
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: phaseAttacksList.Array.data[0].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].bulletConfig.colourConfig.Colour.Array.size
