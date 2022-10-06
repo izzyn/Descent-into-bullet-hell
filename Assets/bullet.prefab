@@ -31,6 +31,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.14, y: 1.62, z: -4}
   m_LocalScale: {x: 0.3, y: 0.3, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -46,6 +47,7 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -80,7 +82,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.4, y: 0.4}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -125,7 +127,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1, y: 1}
-    newSize: {x: 0.4, y: 0.4}
+    newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -162,10 +164,73 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeedMultiplier: 0
-  growthMultiplier: 0
-  isBeam: 0
-  scaleUpY: 0
-  scaleUpX: 0
   stopGrowingpls: 0
-  incrementalGrowth: 0
+  gunOrigin: {fileID: 0}
+  offset: 0
   startSize: {x: 0, y: 0, z: 0}
+  shootsWhenDestroyed: 0
+  shootsWhileTraveling: 0
+  bulletInfo:
+    delayBeforeShooting: 0
+    lockedToGun: 0
+    bullet: {fileID: 0}
+    bulletDelay: 0
+    bulletAmmount: 0
+    bulletDamage: 0
+    bulletSpeedMultiplier: 0
+    growthMultiplier: 0
+    scaleX: 0
+    scaleY: 0
+    removeInvincible: 0
+    removeHit: 0
+    incrementalGrowth: 0
+    beam: 0
+    dieEarly: 0
+    richRocket: 0
+    diesOnWallHit: 0
+    multiShootConfig:
+      bulletMultiplier: 0
+      angle: 0
+    colourConfig:
+      stage: 0
+      colourMode: 0
+      Colour: []
+    beamConfig:
+      lifespan: 0
+    rickRocketSettings:
+      timeToRickRocket: 0
+      rickRocketsOnWallHit: 0
+      timesItBounces: 0
+  dieProperties:
+    delayBeforeShooting: 0
+    lockedToGun: 0
+    bullet: {fileID: 0}
+    bulletDelay: 0
+    bulletAmmount: 0
+    bulletDamage: 0
+    bulletSpeedMultiplier: 0
+    growthMultiplier: 0
+    scaleX: 0
+    scaleY: 0
+    removeInvincible: 0
+    removeHit: 0
+    incrementalGrowth: 0
+    beam: 0
+    dieEarly: 0
+    richRocket: 0
+    diesOnWallHit: 0
+    multiShootConfig:
+      bulletMultiplier: 0
+      angle: 0
+    colourConfig:
+      stage: 0
+      colourMode: 0
+      Colour: []
+    beamConfig:
+      lifespan: 0
+    rickRocketSettings:
+      timeToRickRocket: 0
+      rickRocketsOnWallHit: 0
+      timesItBounces: 0
+  shootsWhenDie: 0
+  sourceScript: {fileID: 0}
