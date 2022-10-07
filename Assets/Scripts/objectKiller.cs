@@ -85,7 +85,7 @@ public class objectKiller : MonoBehaviour
                 {
                     if (collision.GetComponent<moveBullet>().shootsWhenDie && collision.GetComponent<moveBullet>().dieProperties != null)
                     {
-                        shatterDie(collision);
+                        shatterDie(collision.GetComponent<moveBullet>().sourceScript, collision);
                     }
                 }
                 Destroy(collision.gameObject);
@@ -103,17 +103,16 @@ public class objectKiller : MonoBehaviour
 
         }
     }
-    public void shatterDie(GameObject collision, bool diedEarly = false)
+    public static void shatterDie(bossAttack source, GameObject collision, bool diedEarly = false)
     {
         GameObject ghostObject = new GameObject("killSpawn");
         ghostObject.AddComponent<SpriteRenderer>();
         ghostObject.transform.position = collision.transform.position;
         ghostObject.transform.rotation = collision.transform.rotation;
-        instansiatedBossAttack = collision.GetComponent<moveBullet>().sourceScript;
         if (!diedEarly)
         {
             ghostObject.transform.Rotate(0, 0, 180);
         }
-        StartCoroutine(instansiatedBossAttack.spawnBullets(collision.GetComponent<moveBullet>().dieProperties, ghostObject.gameObject));
+        source.StartCoroutine(source.spawnBullets(collision.GetComponent<moveBullet>().dieProperties, ghostObject.gameObject));
     }
 }

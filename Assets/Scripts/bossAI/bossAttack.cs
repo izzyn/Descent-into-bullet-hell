@@ -340,9 +340,9 @@ public class bossAttack: MonoBehaviour
     IEnumerator destroyBullet(GameObject shootBullet, float time, GameObject gunSource, bool kil = false)
     {
         yield return new WaitForSeconds(time); //time before X is destroyed
-        if(shootBullet != null && shootBullet.GetComponent<moveBullet>().shootsWhenDie && shootBullet.GetComponent<moveBullet>().dieProperties != null && this.gameObject.GetComponent<objectKiller>() != null)
+        if(shootBullet != null && shootBullet.GetComponent<moveBullet>().shootsWhenDie && shootBullet.GetComponent<moveBullet>().dieProperties != null)
         {
-            this.gameObject.GetComponent<objectKiller>().shatterDie(shootBullet, true); //Makes the shot shatter on death if that option was picked
+            objectKiller.shatterDie(shootBullet.GetComponent<moveBullet>().sourceScript, shootBullet, true); //Makes the shot shatter on death if that option was picked
         }
         if(shootBullet != null)
         {
