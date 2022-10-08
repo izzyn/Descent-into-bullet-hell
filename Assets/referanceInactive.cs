@@ -21,6 +21,6 @@ public class referanceInactive : MonoBehaviour
             }
         }
         this.gameObject.SetActive(false);
-        ButtonManagerScript.completeButtons -= setReferance;
+        ButtonManagerScript.completeButtons -= setReferance; //makes sure there is no duplicates
     }
 }
