@@ -421,6 +421,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1351508216}
   - component: {fileID: 1351508215}
+  - component: {fileID: 1351508217}
   m_Layer: 0
   m_Name: DataStorage
   m_TagString: BossDataStore
@@ -449,6 +450,10 @@ MonoBehaviour:
     hoverSprite: {fileID: 0}
     selectSprite: {fileID: 0}
     buttonPlace: 0
+  difficultyIndex: 0
+  currentBoss: 
+  lives: 0
+  HP: 0
 --- !u!4 &1351508216
 Transform:
   m_ObjectHideFlags: 0
@@ -464,6 +469,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1351508217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1351508214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98a42f1ddf09f2c4da1e776872b0c456, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasDebug: 1
 --- !u!1 &1634148628 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5903567310328215787, guid: 3913b383e5e998d46b006fa2bd075736, type: 3}

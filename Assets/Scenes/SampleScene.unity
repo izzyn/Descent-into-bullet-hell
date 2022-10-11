@@ -644,7 +644,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1904412740960264174, guid: c3917a4d3e7647b41aca427d7e92170e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 1904412740960264174, guid: c3917a4d3e7647b41aca427d7e92170e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1599,7 +1599,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1904412740960264174, guid: c3917a4d3e7647b41aca427d7e92170e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 1904412740960264174, guid: c3917a4d3e7647b41aca427d7e92170e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3024,7 +3024,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: phaseAttacksList.Array.data[1].hpThreshold
-      value: 20
+      value: 29
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: phaseAttacksList.Array.data[2].hpThreshold
@@ -3260,7 +3260,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: phaseAttacksList.Array.data[1].attackBasicList.Array.data[0].duration
-      value: 2
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: phaseAttacksList.Array.data[1].attackBasicList.Array.data[1].duration
@@ -4920,7 +4920,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: phaseAttacksList.Array.data[1].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].bulletConfig.bulletDelay
-      value: 0.2
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: phaseAttacksList.Array.data[1].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].bulletConfig.lockedToGun
@@ -4976,7 +4976,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: phaseAttacksList.Array.data[1].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].bulletConfig.bulletAmmount
-      value: 1
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: phaseAttacksList.Array.data[1].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].rotationConfig.lockedToGun
@@ -5124,7 +5124,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: phaseAttacksList.Array.data[1].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].bulletConfig.beamConfig.lifespan
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: phaseAttacksList.Array.data[1].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].bulletConfig.delayBeforeShooting
@@ -5204,7 +5204,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: phaseAttacksList.Array.data[1].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].shatterConfig.destoyShoot.bulletDelay
-      value: 0.2
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: phaseAttacksList.Array.data[0].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].shatterConfig.destoyShoot.bulletDamage
@@ -5220,7 +5220,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: phaseAttacksList.Array.data[1].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].shatterConfig.destoyShoot.bulletAmmount
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: phaseAttacksList.Array.data[0].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].shatterConfig.destoyShoot.growthMultiplier
@@ -5260,7 +5260,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: phaseAttacksList.Array.data[1].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].bulletConfig.multiShootConfig.bulletMultiplier
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: phaseAttacksList.Array.data[1].attackBasicList.Array.data[1].spawnInfo.gunInfo.Array.data[0].bulletConfig.multiShootConfig.bulletMultiplier
@@ -5324,7 +5324,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: phaseAttacksList.Array.data[1].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].shatterConfig.destoyShoot.multiShootConfig.angle
-      value: 90
+      value: 360
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: phaseAttacksList.Array.data[1].attackBasicList.Array.data[1].spawnInfo.gunInfo.Array.data[0].bulletConfig.colourConfig.Colour.Array.data[0].b
@@ -5384,7 +5384,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: phaseAttacksList.Array.data[1].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].shatterConfig.destoyShoot.multiShootConfig.bulletMultiplier
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: phaseAttacksList.Array.data[0].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].shatterConfig.destoyShoot.colourConfig.Colour.Array.data[0].b
@@ -5444,7 +5444,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915384, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915384, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: m_LocalRotation.w

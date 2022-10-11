@@ -8,6 +8,7 @@ public class bossFightData : MonoBehaviour
     public LevelData.buttonType selectionScene;
     public List<bossdata> bossData;
     public int difficultyIndex;
+    public string currentBoss;
     public int lives;
     public int HP;
 
