@@ -8,6 +8,11 @@ public class playerMovement : MonoBehaviour
     public Rigidbody2D rigidbody;
     public Vector2 movement;
 
+    private void Start()
+    {
+    
+    }
+
     void Update()
     {
             movement.x = Input.GetAxisRaw("Horizontal");

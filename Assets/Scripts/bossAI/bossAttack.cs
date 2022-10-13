@@ -42,7 +42,9 @@ public class bossAttack: MonoBehaviour
             if(listPhaseAttacks[i].hpThreshold >= hp)
             {
                 StopCoroutine(currentPhase);
-                GameObject[] currentBullets = GameObject.FindGameObjectsWithTag("bullet");
+                GameObject[] currentBullets = new GameObject[GameObject.FindGameObjectsWithTag("bullet").Length + GameObject.FindGameObjectsWithTag("gun").Length];
+                GameObject.FindGameObjectsWithTag("bullet").CopyTo(currentBullets, 0);
+                GameObject.FindGameObjectsWithTag("gun").CopyTo(currentBullets, GameObject.FindGameObjectsWithTag("bullet").Length);
                 for (int j = 0; j < currentBullets.Length; j++)
                 {
                     Destroy(currentBullets[j]); //removes all the bullets from the last phase
@@ -51,15 +53,6 @@ public class bossAttack: MonoBehaviour
                 phaseAttacksList.RemoveAt(i);
                 StartCoroutine(newPhase);
                 currentPhase = newPhase;
-                if (hp <= 0)
-                {
-                    StopCoroutine(currentPhase);
-                    currentBullets = GameObject.FindGameObjectsWithTag("bullet");
-                    for (int j = 0; j < currentBullets.Length; j++)
-                    {
-                        Destroy(currentBullets[j]);
-                    }
-                }
                 break;
             }
         }
@@ -85,6 +78,7 @@ public class bossAttack: MonoBehaviour
         for(int i = 0; i < attackInfo.spawnInfo.gunInfo.Count; i++) //Spawns a gun for each gun in the attacks's list
         {
             GameObject gunSpawned = Instantiate(attackInfo.spawnInfo.gunInfo[i].gun); //Creates an object using the information provided
+            gunSpawned.tag = "gun";
             Vector2 savedScale = gunSpawned.transform.localScale; 
             attackInfo.spawnInfo.gunInfo[i].bulletConfig.lockedToGun = attackInfo.spawnInfo.gunInfo[i].rotationConfig.lockedToGun;
             gunSpawned.transform.localScale = new Vector2(savedScale.x * attackInfo.spawnInfo.gunInfo[i].gunScaleX, savedScale.y * attackInfo.spawnInfo.gunInfo[i].gunScaleY);
@@ -411,10 +405,13 @@ public class gunSpawnInfo
     public struct spawnedGun
     {
         public GameObject spawnLocation; //Where the gun spawns (takes the location's transform values)
+        [SerializeField, Range(0, 360)]
         public float rotation; //rotation of the gun (in Euler angles)
         public GameObject gun; //The gun object prefab (used for bullet locations)
         public Sprite gunTexture; //Incase I want to make reskins of the same prefab
+        [Min(0.01f)]
         public float gunScaleX; //scales for the weapon
+        [Min(0.01f)]
         public float gunScaleY;
         public bool shootTowardsPlayer; //Sets the rotation to towards the player upon spawning
         public bool tracksPlayer; //Sets the rotation towards the player every "trackingAccuracy" seconds
@@ -432,6 +429,7 @@ public class gunSpawnInfo
 public class multiShootSettings //Settings required for shooting multiple bullets in a cone shape
 {
     public int bulletMultiplier;
+    [SerializeField, Range(0, 360)]
     public float angle;
 }
 [System.Serializable]
@@ -450,13 +448,17 @@ public class colourChange //All settings for changing colors
 [System.Serializable]
 public class beamSettings
 {
+    [Min(0)]
     public float lifespan; //Also used for dying early (is the time in seconds it takes for a beam/bullet to get destroyed)
 }
 [System.Serializable]
 public class rotationSettings
 {
+    [Min(0)]
     public float timeToStart; //Time before the gun starts rotating
+    [SerializeField, Range(0, 360)]
     public float degrees; //The amount of degrees it rotates before reseting/going back
+    [Min(0)]
     public float speedMultiplier;
     public bool rotatesBack;            
     public bool lockedToGun;

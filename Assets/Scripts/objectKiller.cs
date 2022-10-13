@@ -109,6 +109,7 @@ public class objectKiller : MonoBehaviour
         ghostObject.AddComponent<SpriteRenderer>();
         ghostObject.transform.position = collision.transform.position;
         ghostObject.transform.rotation = collision.transform.rotation;
+        ghostObject.tag = "gun";
         if (!diedEarly)
         {
             ghostObject.transform.Rotate(0, 0, 180);

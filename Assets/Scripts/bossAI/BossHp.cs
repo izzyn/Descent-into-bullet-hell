@@ -5,7 +5,9 @@ using UnityEngine;
 public class BossHp : MonoBehaviour
 {
     public float health;
+    delegate void bossWin();
 
+    static event bossWin wonBoss;
     IEnumerator ReduceHealth()
     {
         while (health != 0) //0 check
@@ -17,15 +19,19 @@ public class BossHp : MonoBehaviour
             GameObject.Find("helthRed").GetComponent<healthBarScript>().UpdateScale();
             if(health < 0)
             {
-                health = 0;
-                bossAttack.updatePhase(0, bossAttack.phaseAttacksList);
-                GameObject.Find("helthRed").GetComponent<healthBarScript>().UpdateScale();
+                wonBoss();
             }
         }
+    }
+    void test()
+    {
+        Debug.Log("Jag älskar älskar aningus");
+        wonBoss -= test;
     }
     // Start is called before the first frame update
     void Start()
     {
+        wonBoss += test;
         StartCoroutine(ReduceHealth());
     }
 
