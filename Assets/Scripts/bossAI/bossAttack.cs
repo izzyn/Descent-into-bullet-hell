@@ -248,9 +248,9 @@ public class bossAttack: MonoBehaviour
                         shootBullet.transform.position = placeBullet(gunSource); //Sets position correclty
                     }
                     shootBullet.transform.rotation = gunSource.transform.rotation; //The rotation of the bullet == the rotation of the source
-                    if (startAngle != 0) //Checks for 0 just to make sure the formula doesn't break
+                    if (startAngle != 0 && attackInfo.multiShootConfig.bulletMultiplier > 1) //Checks for 0 just to make sure the formula doesn't break
                     {
-                        shootBullet.transform.Rotate(new Vector3(0, 0, shootBullet.transform.rotation.z + startAngle + (angleChunks * j)));
+                        shootBullet.transform.Rotate(new Vector3(0, 0, shootBullet.transform.rotation.z + startAngle + (angleChunks * j))); 
                     }
                     shootBullet.GetComponent<moveBullet>().movementSpeedMultiplier = attackInfo.bulletSpeedMultiplier; //gives the bullet script a property from this script
                     if (shatterConfig != null)
@@ -428,6 +428,7 @@ public class gunSpawnInfo
 [System.Serializable]
 public class multiShootSettings //Settings required for shooting multiple bullets in a cone shape
 {
+    [Min(1)]
     public int bulletMultiplier;
     [SerializeField, Range(0, 360)]
     public float angle;

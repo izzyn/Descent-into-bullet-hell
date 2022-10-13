@@ -8,4 +8,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Level Selector.unity
+    guid: 66e1b0155363bc44c868e73e25bc4af6
+  - enabled: 1
+    path: Assets/Scenes/startingScreen.unity
+    guid: ba4cade94d745c4438b20051f2f52ef2
+  - enabled: 1
+    path: Assets/Scenes/BossSelection.unity
+    guid: ad25bd7d44e9ef44893a2dec24b60cc1
   m_configObjects: {}
