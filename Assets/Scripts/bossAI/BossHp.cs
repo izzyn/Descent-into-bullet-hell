@@ -8,9 +8,10 @@ public class BossHp : MonoBehaviour
     delegate void bossWin();
 
     static event bossWin wonBoss;
+    bool finished = true;
     IEnumerator ReduceHealth()
     {
-        while (health != 0) //0 check
+        while (finished) //0 check
         {
             yield return new WaitForSeconds(0.1f); //reduces HP every second
             health -= 0.1f;
@@ -20,6 +21,7 @@ public class BossHp : MonoBehaviour
             if(health < 0)
             {
                 wonBoss();
+                finished = false;
             }
         }
     }
