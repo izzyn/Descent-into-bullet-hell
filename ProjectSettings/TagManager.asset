@@ -9,6 +9,7 @@ TagManager:
   - BossDataStore
   - mainBoss
   - difficultyButton
+  - gun
   layers:
   - Default
   - TransparentFX
