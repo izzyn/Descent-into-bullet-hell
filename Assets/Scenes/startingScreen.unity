@@ -446,9 +446,9 @@ MonoBehaviour:
   - bossName: 
     bossDesc: adadadad
     sceneName: SampleScene
-    defaultSprite: {fileID: 0}
-    hoverSprite: {fileID: 0}
-    selectSprite: {fileID: 0}
+    defaultSprite: {fileID: 21300000, guid: 842d0bd94233ad047ad6211ad929cf31, type: 3}
+    hoverSprite: {fileID: 21300000, guid: d4e649306dfe3a24dae29e36db5870ce, type: 3}
+    selectSprite: {fileID: 21300000, guid: ede3abeb6af03814da6ef99f04f01ac1, type: 3}
     buttonPlace: 0
   difficultyIndex: 0
   currentBoss: 
