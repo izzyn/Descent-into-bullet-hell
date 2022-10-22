@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class bossAttack: MonoBehaviour
 {
+    poolManager PoolManager;
     [System.Serializable]
     public struct attackBasic
     {
@@ -32,6 +33,7 @@ public class bossAttack: MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        PoolManager = GameObject.Find("DataStorage").GetComponent<poolManager>(); //referance for data storage pool manager
         currentPhase = pickAttack(phaseAttacksList[0].attackBasicList);
         StartCoroutine(currentPhase); //makes the boss pick attacks when it loads in
     }
@@ -42,13 +44,11 @@ public class bossAttack: MonoBehaviour
             if(listPhaseAttacks[i].hpThreshold >= hp)
             {
                 StopCoroutine(currentPhase);
-                GameObject[] currentBullets = new GameObject[GameObject.FindGameObjectsWithTag("bullet").Length + GameObject.FindGameObjectsWithTag("gun").Length];
-                GameObject.FindGameObjectsWithTag("bullet").CopyTo(currentBullets, 0);
-                GameObject.FindGameObjectsWithTag("gun").CopyTo(currentBullets, GameObject.FindGameObjectsWithTag("bullet").Length);
-                for (int j = 0; j < currentBullets.Length; j++)
+                foreach (GameObject gun in GameObject.FindGameObjectsWithTag("gun"))
                 {
-                    Destroy(currentBullets[j]); //removes all the bullets from the last phase
+                    Destroy(gun); //removes all the bullets from the last phase
                 }
+                PoolManager.resetAll();
                 IEnumerator newPhase = pickAttack(phaseAttacksList[i].attackBasicList); //Sets the new attack list to the one that corresponds to that phase
                 phaseAttacksList.RemoveAt(i);
                 StartCoroutine(newPhase);
@@ -94,7 +94,7 @@ public class bossAttack: MonoBehaviour
                 gunSpawned.transform.Rotate(new Vector3(0, 0, attackInfo.spawnInfo.gunInfo[i].rotation));
                 if ((gunSpawned.transform.rotation.eulerAngles.z * Mathf.Rad2Deg) > 90f || (gunSpawned.transform.rotation.eulerAngles.z) < -90f)
                 {
-                    Debug.Log("Yes"); //Flips the gun sprite so it doesn't look weird when rotating
+                    //Flips the gun sprite so it doesn't look weird when rotating
                     gunSpawned.GetComponent<SpriteRenderer>().flipY = true;
                 }
             }
@@ -187,7 +187,7 @@ public class bossAttack: MonoBehaviour
                     float startAngle = (attackInfo.multiShootConfig.angle / 2) * -1; //Sets the angle to 50% of the total angle below where it starts
                     float angleChunks = attackInfo.multiShootConfig.angle / (attackInfo.multiShootConfig.bulletMultiplier - 1); //Makes all bullet streams equally far away from eachother angle-wise
 
-                    GameObject shootBullet = Instantiate(attackInfo.bullet); //Creates the bullet
+                    GameObject shootBullet = PoolManager.requestBullet(attackInfo.bullet); //Creates the bullet
                     if(startAngle != 0) //Sets the bullet offsets (used for the move bullet script)
                     {
                         shootBullet.GetComponent<moveBullet>().offset = (angleChunks * j) + startAngle;
@@ -206,6 +206,7 @@ public class bossAttack: MonoBehaviour
                     }
                     if (attackInfo.beam)
                     {
+                        shootBullet.GetComponent<SpriteRenderer>().size = new Vector2(attackInfo.bullet.GetComponent<SpriteRenderer>().size.x, shootBullet.GetComponent<SpriteRenderer>().size.y);
                         bool kil = false;
                         if (i + 1 >= attackInfo.bulletAmmount)
                         {
@@ -217,7 +218,6 @@ public class bossAttack: MonoBehaviour
                     {
                         StartCoroutine(destroyBullet(shootBullet, attackInfo.beamConfig.lifespan, gunSource));
                     }
-                    Debug.Log(shootBullet.GetComponent<SpriteRenderer>().material.GetColor("_Color"));
                     changeColour(attackInfo.colourConfig.stage, attackInfo.colourConfig.Colour, shootBullet); //Sets the colour of the bullet
                     if (attackInfo.colourConfig.colourMode == colourChange.mode.line) //Depending on the setting, the bullet color updates at different points and in different ways
                     {
@@ -228,8 +228,6 @@ public class bossAttack: MonoBehaviour
                         int newstageL = Random.Range(0, attackInfo.colourConfig.Colour.Count); //sets the stage (the colour in the array) randomly)
                         attackInfo.colourConfig.stage = changeColourState(newstageL, attackInfo.colourConfig.Colour.Count); //Makes the bullet be another colour next time
                     }
-                    test = GameObject.FindGameObjectsWithTag("bullet");
-                    Debug.Log(test.Length); //For debugging reasons, shows how many bullets are on screen (for stress testing)
                     float width = gunSource.GetComponent<SpriteRenderer>().bounds.size.x;
                     if (gunSource.transform.Find("bulletSpawn") != null) //Puts the bullet in the correct part of its source. Depending on the "FlipY" propety of the source
                     {
@@ -244,7 +242,6 @@ public class bossAttack: MonoBehaviour
                     }
                     else
                     {
-                        Debug.Log(placeBullet(gunSource));
                         shootBullet.transform.position = placeBullet(gunSource); //Sets position correclty
                     }
                     shootBullet.transform.rotation = gunSource.transform.rotation; //The rotation of the bullet == the rotation of the source
@@ -340,7 +337,7 @@ public class bossAttack: MonoBehaviour
         }
         if(shootBullet != null)
         {
-            Destroy(shootBullet);
+            PoolManager.unrequestBullet(shootBullet);
         }
         if(kil) //Destroys the source if all beams have been destroyed.
         {

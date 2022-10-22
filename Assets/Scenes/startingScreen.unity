@@ -422,6 +422,7 @@ GameObject:
   - component: {fileID: 1351508216}
   - component: {fileID: 1351508215}
   - component: {fileID: 1351508217}
+  - component: {fileID: 1351508218}
   m_Layer: 0
   m_Name: DataStorage
   m_TagString: BossDataStore
@@ -482,6 +483,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasDebug: 1
+--- !u!114 &1351508218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1351508214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f87a8aec1bf69c54db09a9f01d3bd8cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPoolConfigs:
+  - bulletPrefab: {fileID: 8438050386559320783, guid: bc92b5e85684a03409a39249bf0ba14b, type: 3}
+    bulletCount: 5000
+  - bulletPrefab: {fileID: 1125531046277643471, guid: 8ed8bad705c85274d987ff0afbb79d39, type: 3}
+    bulletCount: 300
 --- !u!1 &1634148628 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5903567310328215787, guid: 3913b383e5e998d46b006fa2bd075736, type: 3}

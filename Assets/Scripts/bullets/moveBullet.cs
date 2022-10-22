@@ -17,6 +17,8 @@ public class moveBullet : MonoBehaviour
     public BulletSimple dieProperties;
     public bool shootsWhenDie;
     public bossAttack sourceScript;
+    public int index;
+    public GameObject prefab;
     // Start is called before the first frame update
     void Start()
     {
@@ -77,12 +79,14 @@ public class moveBullet : MonoBehaviour
         if(bulletInfo.beam)
         {
             var saveSize = gameObject.GetComponent<SpriteRenderer>().size;
-            if(bulletInfo.beam)
+            Debug.Log(saveSize);
+            if(saveSize.x < startSize.x * 1000)
             {
-                if(saveSize.y < startSize.y * bulletInfo.scaleY)
-                {
-                        saveSize.y += ((saveSize.y * bulletInfo.scaleY) / 10) * bulletInfo.growthMultiplier;
-                }
+                saveSize.x += ((saveSize.x * bulletInfo.scaleX) / 10) * bulletInfo.growthMultiplier;
+            }
+            if (bulletInfo.incrementalGrowth && saveSize.y < startSize.y * bulletInfo.scaleY)
+            {
+                saveSize.y += ((saveSize.y * bulletInfo.growthMultiplier) / 10) * bulletInfo.growthMultiplier;
             }
             gameObject.GetComponent<SpriteRenderer>().size = saveSize;
 
