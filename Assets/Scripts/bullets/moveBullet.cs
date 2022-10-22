@@ -6,7 +6,6 @@ public class moveBullet : MonoBehaviour
 {
     public float movementSpeedMultiplier; //Different properties the bullet needs, explained in the boss attack script
     float growthRate;
-    public bool stopGrowingpls;
     public GameObject gunOrigin;
     public float offset;
     public Vector3 startSize;
@@ -78,10 +77,6 @@ public class moveBullet : MonoBehaviour
         if(bulletInfo.beam)
         {
             var saveSize = gameObject.GetComponent<SpriteRenderer>().size;
-            if (!stopGrowingpls)
-            {
-                saveSize.x += growthRate;
-            }
             if(bulletInfo.beam)
             {
                 if(saveSize.y < startSize.y * bulletInfo.scaleY)
