@@ -299,6 +299,7 @@ public class bossAttack: MonoBehaviour
     }
     public GameObject createBullet(GameObject shootBullet, BulletSimple attackInfo, GameObject gunSource, shatterShotConfig shatterConfig = null)
     {
+        shootBullet.transform.localScale = new Vector3(attackInfo.scaleX*0.3f, attackInfo.scaleX*0.3f);
         shootBullet.GetComponent<moveBullet>().bulletInfo = attackInfo.Copy(); //Gives the bullet scripts all information they require to function
         shootBullet.GetComponent<damagePlayer>().damage = attackInfo.bulletDamage;
         shootBullet.GetComponent<damagePlayer>().removeWhenHit = attackInfo.removeHit;
@@ -312,6 +313,10 @@ public class bossAttack: MonoBehaviour
                 shootBullet.GetComponent<moveBullet>().shootsWhenDie = shatterConfig.shootsWhenDestroyed;
                 shootBullet.GetComponent<moveBullet>().dieProperties = shatterConfig.destoyShoot;
             }
+        }
+        else
+        {
+            shootBullet.GetComponent<moveBullet>().shootsWhenDie = false;
         }
         return shootBullet;
     }

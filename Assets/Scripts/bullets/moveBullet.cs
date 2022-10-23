@@ -26,11 +26,7 @@ public class moveBullet : MonoBehaviour
         growthRate = 0.1f * movementSpeedMultiplier;
         if(!bulletInfo.incrementalGrowth)
         {
-            if(!bulletInfo.beam) //sets the bullet size of the bullet to the scale it's supposed to be.
-            {
-                gameObject.transform.localScale = new Vector2(gameObject.transform.localScale.x * bulletInfo.scaleX, gameObject.transform.localScale.y * bulletInfo.scaleY);
-            }
-            else //If the bullet is a beam the X should not increase because it increases over time.
+            if(bulletInfo.beam) //If the bullet is a beam the X should not increase because it increases over time.
             {
                 gameObject.GetComponent<SpriteRenderer>().size = new Vector2(startSize.x, gameObject.transform.localScale.y * bulletInfo.scaleY);
             }
