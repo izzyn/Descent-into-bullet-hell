@@ -5052,7 +5052,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: phaseAttacksList.Array.data[2].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].bulletConfig.scaleY
-      value: 1
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: phaseAttacksList.Array.data[0].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].bulletConfig.dieEarly
@@ -5152,10 +5152,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
       propertyPath: phaseAttacksList.Array.data[1].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].bulletConfig.bulletAmmount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}
-      propertyPath: phaseAttacksList.Array.data[1].attackBasicList.Array.data[0].spawnInfo.gunInfo.Array.data[0].bulletConfig.diesOnWallHit
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2494599609475915383, guid: 2c33d3d2799a07c4b92ec6271c89990d, type: 3}

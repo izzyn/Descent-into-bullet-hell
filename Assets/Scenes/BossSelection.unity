@@ -740,7 +740,7 @@ RectTransform:
   m_GameObject: {fileID: 928750650}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.1375, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 396771393}
@@ -749,7 +749,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 6.6, y: 171.42708}
-  m_SizeDelta: {x: 220.09, y: 0}
+  m_SizeDelta: {x: 0, y: 196.4271}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &928750652
 MonoBehaviour:
@@ -828,7 +828,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
-  m_VerticalFit: 1
+  m_VerticalFit: 0
 --- !u!1 &1039527371 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5903567310328215787, guid: 3913b383e5e998d46b006fa2bd075736, type: 3}
@@ -977,7 +977,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1778739518}
   m_HandleRect: {fileID: 1778739517}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
