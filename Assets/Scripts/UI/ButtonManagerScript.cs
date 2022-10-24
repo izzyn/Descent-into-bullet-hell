@@ -26,6 +26,14 @@ public class ButtonManagerScript : MonoBehaviour
                     newButton.GetComponent<Image>().type = Image.Type.Simple;
                     newButton.GetComponent<Image>().sprite = shortHandList[i].defaultSprite;
                 }
+                SpriteState st = new SpriteState(); //magical mumbo jumbo needed to change the highlighted sprites and also make them highlight properly
+                st.highlightedSprite = shortHandList[i].hoverSprite;
+                st.pressedSprite = shortHandList[i].selectSprite;
+                st.selectedSprite = shortHandList[i].defaultSprite;
+                Navigation newNav = new Navigation(); //making it so highlighting is good
+                newNav.mode = Navigation.Mode.None;
+                newButton.GetComponent<Button>().navigation = newNav; 
+                newButton.GetComponent<Button>().spriteState = st;
                 newButton.GetComponent<bossStart>().bossScene = shortHandList[i].sceneName;
                 newButton.transform.SetParent(GameObject.Find("buttonPanel").transform);
             }

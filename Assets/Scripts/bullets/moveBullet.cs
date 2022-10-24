@@ -6,7 +6,6 @@ public class moveBullet : MonoBehaviour
 {
     public float movementSpeedMultiplier; //Different properties the bullet needs, explained in the boss attack script
     float growthRate;
-    public bool stopGrowingpls;
     public GameObject gunOrigin;
     public float offset;
     public Vector3 startSize;
@@ -18,6 +17,8 @@ public class moveBullet : MonoBehaviour
     public BulletSimple dieProperties;
     public bool shootsWhenDie;
     public bossAttack sourceScript;
+    public int index;
+    public GameObject prefab;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,11 +26,7 @@ public class moveBullet : MonoBehaviour
         growthRate = 0.1f * movementSpeedMultiplier;
         if(!bulletInfo.incrementalGrowth)
         {
-            if(!bulletInfo.beam) //sets the bullet size of the bullet to the scale it's supposed to be.
-            {
-                gameObject.transform.localScale = new Vector2(gameObject.transform.localScale.x * bulletInfo.scaleX, gameObject.transform.localScale.y * bulletInfo.scaleY);
-            }
-            else //If the bullet is a beam the X should not increase because it increases over time.
+            if(bulletInfo.beam) //If the bullet is a beam the X should not increase because it increases over time.
             {
                 gameObject.GetComponent<SpriteRenderer>().size = new Vector2(startSize.x, gameObject.transform.localScale.y * bulletInfo.scaleY);
             }
@@ -78,16 +75,14 @@ public class moveBullet : MonoBehaviour
         if(bulletInfo.beam)
         {
             var saveSize = gameObject.GetComponent<SpriteRenderer>().size;
-            if (!stopGrowingpls)
+            Debug.Log(saveSize);
+            if(saveSize.x < startSize.x * 1000)
             {
-                saveSize.x += growthRate;
+                saveSize.x += ((saveSize.x * bulletInfo.scaleX) / 10) * bulletInfo.growthMultiplier;
             }
-            if(bulletInfo.beam)
+            if (bulletInfo.incrementalGrowth && saveSize.y < startSize.y * bulletInfo.scaleY)
             {
-                if(saveSize.y < startSize.y * bulletInfo.scaleY)
-                {
-                        saveSize.y += ((saveSize.y * bulletInfo.scaleY) / 10) * bulletInfo.growthMultiplier;
-                }
+                saveSize.y += ((saveSize.y * bulletInfo.growthMultiplier) / 10) * bulletInfo.growthMultiplier;
             }
             gameObject.GetComponent<SpriteRenderer>().size = saveSize;
 
