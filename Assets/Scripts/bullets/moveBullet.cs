@@ -75,7 +75,6 @@ public class moveBullet : MonoBehaviour
         if(bulletInfo.beam)
         {
             var saveSize = gameObject.GetComponent<SpriteRenderer>().size;
-            Debug.Log(saveSize);
             if(saveSize.x < startSize.x * 1000)
             {
                 saveSize.x += ((saveSize.x * bulletInfo.scaleX) / 10) * bulletInfo.growthMultiplier;
