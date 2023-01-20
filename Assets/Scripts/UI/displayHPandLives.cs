@@ -76,8 +76,6 @@ public class displayHPandLives : MonoBehaviour
         {
             differanceLives = LivesLeft;
         }
-        Debug.Log(differanceHP);
-        Debug.Log(differanceLives);
 
         for (int i = 0; i < HPList.Count; i++)
         {

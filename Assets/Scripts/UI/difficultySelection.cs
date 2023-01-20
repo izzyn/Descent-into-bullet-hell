@@ -21,6 +21,7 @@ public class difficultySelection : MonoBehaviour
     }
     private void difficultyInfo()
     {
+        Time.timeScale = 1;
         bossFightData shorthandInfo = GameObject.Find("DataStorage").GetComponent<bossFightData>();
         shorthandInfo.difficultyIndex = difficultyIndex;
         shorthandInfo.HP = HP;

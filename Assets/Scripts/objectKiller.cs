@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class objectKiller : MonoBehaviour
 {
+    poolManager PoolManager;
     private bossAttack instansiatedBossAttack;
     // Start is called before the first frame update
     public enum kil{
@@ -17,7 +18,7 @@ public class objectKiller : MonoBehaviour
     public kil direction;
     void Start()
     {
-        
+        PoolManager = GameObject.Find("DataStorage").GetComponent<poolManager>();
     }
 
     // Update is called once per frame
@@ -65,7 +66,7 @@ public class objectKiller : MonoBehaviour
                 {
                     if(!collision.GetComponent<moveBullet>().bulletInfo.beam)
                     {
-                        Destroy(collision.gameObject);
+                        PoolManager.unrequestBullet(collision.gameObject);
                     }
                     break;
                 }
@@ -77,7 +78,7 @@ public class objectKiller : MonoBehaviour
         {
             if (collision.GetComponent<moveBullet>().bulletInfo.beam)
             {
-                //collision.GetComponent<moveBullet>().stopGrowingpls = true;
+                
             }
             else
             {
@@ -88,9 +89,8 @@ public class objectKiller : MonoBehaviour
                         shatterDie(collision.GetComponent<moveBullet>().sourceScript, collision);
                     }
                 }
-                Destroy(collision.gameObject);
+                PoolManager.unrequestBullet(collision.gameObject);
             }
-
         }
         else if(collision.GetComponent<moveBullet>().bulletInfo.rickRocketSettings.rickRocketsOnWallHit)
         {
